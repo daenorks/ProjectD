@@ -3,7 +3,7 @@ package basic;
 public class Plateau {
 	Carte[][] cartes;
 	
-	boolean check(Carte carte, int x, int y) {
+	protected boolean check(Carte carte, int x, int y) {
 		int i = 0;
 		if (x < 0 || y < 0 || x >= cartes.length || y >= cartes[0].length)
 			return false; //Error
@@ -37,7 +37,7 @@ public class Plateau {
 		return true;
 	}
 	
-	void put(Carte carte, int x, int y) {
+	protected void put(Carte carte, int x, int y) {
 		cartes[x][y] = carte;
 	}
 	

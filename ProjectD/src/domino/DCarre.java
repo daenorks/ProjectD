@@ -15,7 +15,6 @@ public enum DCarre implements Carte {
 	
 	private int n;
 	private File file;
-	efe
 
 	private DCarre(int n, String file) {
 		this.n = n;
