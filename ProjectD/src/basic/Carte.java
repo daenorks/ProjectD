@@ -5,7 +5,7 @@ import java.io.File;
 public interface Carte {
 	int getH();
 	int getD();
-	int getG(); zdz
+	int getG();
 	int getB();
 	File getPicture();
 }
