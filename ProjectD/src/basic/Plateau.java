@@ -15,7 +15,7 @@ public class Plateau {
 		if (y < carres[x].length - 1 && carres[x][y + 1] != null) 
 			if (carre.getH() != carres[x][y + 1].getB())
 				return false;
-		if (x > 0 && carres[x - 1][y] != null)
+		if (y > 0 && carres[x - 1][y] != null)
 			if (carre.getB() != carres[x][y - 1].getH())
 				return false;
 		return true;
