@@ -92,10 +92,13 @@ public class Domino_Jeu {
 	}
 
 	public boolean placement(Domino d) {
-		System.out.println("Faites 0 pour poser a gauche, 1 pour poser a droite et 2 pour tourner le domino");
-		System.out.println("Faites -1 revenir au choix des dominos");
+		
 		boolean poser = false;
 		while (!poser) {
+			System.out.println("Faites 0 pour poser a gauche, 1 pour poser a droite et 2 pour tourner le domino");
+			System.out.println("Faites -1 revenir au choix des dominos");
+			d.afficher();
+			System.out.println();
 			int x = getInt();
 			switch (x) {
 			case 0:
