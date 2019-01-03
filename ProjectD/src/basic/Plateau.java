@@ -1,7 +1,9 @@
 package basic;
 
-public class Plateau {
+public abstract class Plateau {
 	protected Carre[][] carres;
+	
+	public abstract boolean poser(Carte carte, int side, int x, int y);
 
 	protected boolean check(Carre carre, int x, int y) {
 		if (x < 0 || y < 0 || x >= carres.length || y >= carres[0].length)
@@ -28,7 +30,7 @@ public class Plateau {
 				|| (x > 0 && carres[x - 1][y] != null));
 	}
 
-	boolean checkPut(Carre carre, int x, int y) {
+	protected boolean checkPut(Carre carre, int x, int y) {
 		if (check(carre, x, y))
 			put(carre, x, y);
 		else
@@ -44,12 +46,16 @@ public class Plateau {
 		this.carres = c;
 	}
 
-	public int taille(int x) {
+	protected int taille(int x) {
 		return carres[x].length;
 	}
 
 	public Carre getCarre(int x, int y) {
 		return carres[x][y];
+	}
+	
+	public Carre[][] getCarres() {
+		return carres;
 	}
 
 }
