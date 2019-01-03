@@ -39,6 +39,10 @@ public abstract class Jeu {
 	private void prochain() {
 		actuel = joueurs.get(((joueurs.indexOf(actuel)) + 1) % joueurs.size());
 	}
+	
+	public void passerTour() {
+		prochain();
+	}
 
 	ArrayList<Carte> getActualHand() {
 		return actuel.getHand();
