@@ -43,7 +43,7 @@ public class Domino_Jeu {
 				}
 			} else
 				poser();
-		}
+		} 
 		jouer_vueclassique();
 	}
 
@@ -69,17 +69,23 @@ public class Domino_Jeu {
 
 	@SuppressWarnings("resource")
 	private int choixAction() {
-		Scanner scan = new Scanner(System.in);
 		System.out.println("Choisisez un domino parmis ceux disponible, num�rot�s de 0 � n"
 				+ "ou -1 pour piocher : ");
-		int x = scan.nextInt();
-		scan.nextLine();
-		scan.close();
+		int x = getInt();
 		if (x < -1 || x >= actuel.getHand().size()) {
 			System.out.println("Veuillez choisir un num�ro VALIDE !");
 			return choixAction();
 		} else
 			return x;
+	}
+	
+	public int getInt() {
+		Scanner scan = new Scanner(System.in);
+		while (!scan.hasNextInt() && scan.hasNextLine())
+			scan.nextLine();
+		int x = scan.nextInt();
+		scan.close();
+		return x;
 	}
 
 	public boolean placement(Domino d) {
@@ -87,11 +93,7 @@ public class Domino_Jeu {
 		System.out.println("Faites -1 revenir au choix des dominos");
 		boolean poser = false;
 		while (!poser) {
-			Scanner scan = new Scanner(System.in);
-			d.afficher();
-			int x = scan.nextInt();
-			scan.nextLine();
-			scan.close();
+			int x = getInt();
 			switch (x) {
 			case 0:
 				poser = plateau.poserAGauche(d);
