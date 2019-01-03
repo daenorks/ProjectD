@@ -1,5 +1,6 @@
 package domino;
 
+import basic.Carre;
 import basic.Plateau;
 
 public class DPlateau extends Plateau {
@@ -14,7 +15,6 @@ public class DPlateau extends Plateau {
 	}
 	
 	public DPlateau (int x) {
-		Carre [][] c = new Carre [1][x];
-		super(c);
+		super(new Carre [1][x]);
 	}
 }

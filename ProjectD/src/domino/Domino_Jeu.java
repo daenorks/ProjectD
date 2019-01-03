@@ -1,23 +1,27 @@
+import java.util.ArrayList;
+import basic.Joueur;
+
 public class Domino_Jeu {
 	
 	private DPlateau plateau;
-	private ArrayList<Joueur> joueurs;
+	private ArrayList<DJoueur> joueurs;
+	private DPioche pioche;
 	
 	public Domino_Jeu (){
-		joueurs = new ArrayList<Joueur>;
+		joueurs = new ArrayList<DJoueur>();
 	}
 	
-	public void add (Joueur j) {
+	public void add (DJoueur j) {
 		joueurs.add(j);
 	}
 	
 	public void demarrer(int x){
 		distribuer(x);
 		plateau = new DPlateau (x);
-		jouer()
+		jouer();
 	}
 	
-	public void distribuer(int x) { // distribue X dominos au hasard à chaque joueurs
+	public void distribuer(int x) { // distribue X dominos au hasard ï¿½ chaque joueurs
 		for (int i = 0 ; i < joueurs.size() ; i++) {
 			
 			for (int j = 0; j < x; j++) {
