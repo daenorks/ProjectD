@@ -1,9 +1,8 @@
 package domino;
 
+import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.LinkedList;
-
-import com.sun.java_cup.internal.runtime.Scanner;
 
 import basic.Joueur;
 
@@ -68,9 +67,9 @@ public class Domino_Jeu {
 	}
 
 	private boolean poser(DJoueur j) {
-		ArrayList<Domino> disponible = posable();
+		ArrayList<Domino> disponible = posable(j);
 		if (disponible.size() == 0) {
-			pioche();
+			pioche(j);
 			return false;
 		} else {
 
@@ -210,6 +209,7 @@ public class Domino_Jeu {
 			if (plateau.check(j.get(i)))
 				disponible.add(j.getHand().get(i));
 		}
+		return disponible;
 	}
 
 	private void findepartie() {
