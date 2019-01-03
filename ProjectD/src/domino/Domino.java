@@ -11,6 +11,11 @@ public class Domino implements Carte {
 		
 	}
 	
+	public Domino(DCarre c1, DCarre c2) {
+		carre1 = c1;
+		carre2 = c2;
+	}
+	
 	public DCarre getCarre1() {
 		return carre1;
 	}

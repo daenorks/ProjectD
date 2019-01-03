@@ -1,16 +1,19 @@
+import java.util.ArrayList;
+import basic.Joueur;
+
 public class Domino_Jeu {
 	
 	private DPlateau plateau;
-	private LinkedList<Joueur> joueurs;
-	private LinkedList<Joueur> classement;
+	private LinkedList<DJoueur> joueurs;
+	private LinkedList<DJoueur> classement;
 	private DPioche pioche;
 	
 	public Domino_Jeu (){
-		joueurs = new ArrayList<Joueur>;
-		classement = new ArrayList <Joueur>;
+		joueurs = new ArrayList<DJoueur>();
+		classement = new ArrayList <DJoueur>;
 	}
 	
-	public void add (Joueur j) {
+	public void add (DJoueur j) {
 		joueurs.add(j);
 	}
 	
@@ -24,7 +27,7 @@ public class Domino_Jeu {
 		jouer();
 	}
 	
-	public void distribuer(int x) { // distribue X dominos au hasard à chaque joueurs
+	public void distribuer(int x) { // distribue X dominos au hasard ï¿½ chaque joueurs
 		for (int i = 0 ; i < joueurs.size() ; i++) {
 			joueurs(i).add(hasard(x));
 		}
@@ -32,9 +35,12 @@ public class Domino_Jeu {
 	
 	
 	public void jouer() {
+		
+		if (joueurs.size() == 0) findepartie();
+		
 		for(int i = 0 ; i < joueurs.size(); i++) {
 			if (joueurs.get(i).nombreDeCartes() == 1) {
-				if (joueurs.poser()) {
+				if (poser(joueurs.get(i))) {
 					classement.add(joueurs.get(i));
 					joueurs.remove(i);
 				}
@@ -44,4 +50,11 @@ public class Domino_Jeu {
 	}
 	
 	
+	public void poser(DJoueur j) {
+		
+	}
+	
+	public void findepartie(){
+		return;
+	}
 }
