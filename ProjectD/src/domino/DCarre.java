@@ -2,9 +2,9 @@ package domino;
 
 import java.io.File;
 
-import basic.Carte;
+import basic.Carre;
 
-public enum DCarre implements Carte {
+public enum DCarre implements Carre {
 	C0(0, "Dice0.png"),
 	C1(1, "Dice1.png"),
 	C2(2, "Dice2.png"),

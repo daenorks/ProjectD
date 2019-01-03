@@ -1,9 +1,9 @@
 package basic;
 
 public class Plateau {
-	Carte[][] cartes;
+	Carre[][] cartes;
 	
-	protected boolean check(Carte carte, int x, int y) {
+	protected boolean check(Carre carte, int x, int y) {
 		int i = 0;
 		if (x < 0 || y < 0 || x >= cartes.length || y >= cartes[0].length)
 			return false; //Error
@@ -30,14 +30,14 @@ public class Plateau {
 		return i > 0;
 	}
 	
-	boolean checkPut(Carte carte, int x, int y) {
+	boolean checkPut(Carre carte, int x, int y) {
 		if (check(carte, x ,y))
 			put(carte, x, y);
 		else return false;
 		return true;
 	}
 	
-	protected void put(Carte carte, int x, int y) {
+	protected void put(Carre carte, int x, int y) {
 		cartes[x][y] = carte;
 	}
 	

@@ -1,6 +1,9 @@
 package domino;
 
-public class Domino {
+import basic.Carte;
+import basic.Joueur;
+
+public class Domino implements Carte {
 	private DCarre carre1;
 	private DCarre carre2;
 	
@@ -10,6 +13,14 @@ public class Domino {
 	}
 	public DCarre getCarre2() {
 		return carre2;
+	}
+	
+	public boolean estPosable() {
+		return true;
+	}
+	@Override
+	public void jouerCarte(Joueur joueur) {
+		
 	}
 	
 	

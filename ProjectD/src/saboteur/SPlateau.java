@@ -1,5 +1,7 @@
 package saboteur;
 
-public class SPlateau {
+import basic.Plateau;
+
+public class SPlateau extends Plateau {
 
 }
