@@ -6,6 +6,9 @@ import java.util.Collections;
 import basic.Carte;
 import basic.Pioche;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class DPioche extends Pioche {
 	public DPioche() {
 		ArrayList<Carte> dominos = new ArrayList<Carte>();

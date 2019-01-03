@@ -9,7 +9,7 @@ import basic.Joueur;
 public class Domino_Jeu {
 
 	public static void main(String[] args) {
-		Domino_jeu j = new Domino_jeu(2, 5);
+		Domino_Jeu j = new Domino_Jeu(2, 5);
 		j.jouer_vueclassique();
 	}
 
@@ -51,15 +51,15 @@ public class Domino_Jeu {
 			return;
 		}
 
-		jouer();
+		jouer_vueclassique();
 
 	}
 
 	private boolean bloque() {
-		if (pioche.size() > 0)
+		if (pioche.getHand().size() > 0)
 			return false;
-		for (int i = 0; i < joueurs.length; i++) {
-			if (joueurs.get(i).posable() > 0)
+		for (int i = 0; i < joueurs.size(); i++) {
+			if (posable(joueurs.get(i)).size() > 0)
 				return false;
 		}
 
@@ -69,19 +69,20 @@ public class Domino_Jeu {
 	private boolean poser(DJoueur j) {
 		ArrayList<Domino> disponible = posable(j);
 		if (disponible.size() == 0) {
-			pioche(j);
+			j.add(pioche,1);
 			return false;
 		} else {
 
 			afficher_vueclassique();
-			afficher_mesdominos(j.getHand());
+			ArrayList d1 = j.getHand();
+			afficher_mesdominos(d1);
 			java.util.Scanner scan = new Scanner(System.in);
 			Domino c = new Domino(null,null);
 			System.out.println("Choisisez un domino parmis ceux disponible, numérotés de 0 à n: ");
 			int iterateur=0;
 			int aux=0;
-			boolean c=true;
-			while(c) {
+			boolean bool=true;
+			while(bool) {
 				switch (iterateur)
 				{
 
@@ -90,7 +91,7 @@ public class Domino_Jeu {
 					break;
 				case 0:
 					afficher_mesdominos(disponible);
-					Domino c = ChoixDomino(disponible);
+					c = choixDomino(disponible);
 					iterateur = 10;
 					break;
 				case 10:
@@ -98,9 +99,9 @@ public class Domino_Jeu {
 					iterateur = scan.nextInt();
 					break;
 				case 1:
-					if (check(c.getCarre2(), plateau.getX1(), 0)) {
+					if (plateau.check(c.getCarre2(), plateau.getX1())) {
 						plateau.poserPremier(c, true);
-						c = false;
+						bool = false;
 					}
 					else {
 						System.out.println("Veuillez choisir une orientation disponible");
@@ -108,9 +109,9 @@ public class Domino_Jeu {
 					}
 					break;
 				case 2:
-					if (check(c.getCarre1(), plateau.getX1(), 0)) {
+					if (plateau.check(c.getCarre1(), plateau.getX1())) {
 						plateau.poserPremier(c, false);
-						c = false;
+						bool = false;
 					}
 					else {
 						System.out.println("Veuillez choisir une orientation disponible");
@@ -118,9 +119,9 @@ public class Domino_Jeu {
 					}
 					break;
 				case 3:
-					if (check(c.getCarre1(), plateau.getX2(), 0)) {
+					if (plateau.check(c.getCarre1(), plateau.getX2())) {
 						plateau.poserDernier(c,true);
-						c = false;
+						bool = false;
 					}
 					else {
 						System.out.println("Veuillez choisir une orientation disponible");
@@ -128,9 +129,9 @@ public class Domino_Jeu {
 					}
 					break;
 				case 4:
-					if (check(c.getCarre2(), plateau.getX1(), 0)) {
-						poserPremier(c,false);
-						c = false;
+					if (plateau.check(c.getCarre2(), plateau.getX1())) {
+						plateau.poserPremier(c,false);
+						bool = false;
 					}
 
 					else {
@@ -151,8 +152,9 @@ public class Domino_Jeu {
 					break;
 				}
 			}
+			scan.close();
 		}
-		scan.close();
+		
 		return true;
 
 	}
@@ -169,22 +171,22 @@ public class Domino_Jeu {
 	}
 
 	public void choixPlacement(Domino c) {
-		if (check(c.getCarre2(), plateau.getX1(), 0)) {
+		if (plateau.check(c.getCarre2(), plateau.getX1())) {
 			System.out.println(
 					"Pour ajouter le domino au debut dans son orientation normale, appuyez sur 1");
 		}
 
-		if (check(c.getCarre1(), plateau.getX1(), 0)) {
+		if (plateau.check(c.getCarre1(), plateau.getX1())) {
 			System.out.println(
 					"Pour ajouter le domino numéro au debut dans son orientation inversée, appuyez sur 2");
 		}
 
-		if (check(c.getCarre1(), plateau.getX2(), 0)) {
+		if (plateau.check(c.getCarre1(), plateau.getX2())) {
 			System.out.println(
 					"Pour ajouter le domino numéro  a la fin dans son orientation normale, appuyez sur 3");
 		}
 
-		if (check(c.getCarre2(), plateau.getX2(), 0)) {
+		if (plateau.check(c.getCarre2(), plateau.getX2())) {
 			System.out.println(
 					"Pour ajouter le domino numéro a la fin dans son orientation inversée, appuyez sur 4");
 		}
@@ -205,9 +207,9 @@ public class Domino_Jeu {
 
 	private ArrayList<Domino> posable(DJoueur j) {
 		ArrayList<Domino> disponible = new ArrayList<Domino>();
-		for (int i = 0; i < j.nombreDeCartes(); j++) {
-			if (plateau.check(j.get(i)))
-				disponible.add(j.getHand().get(i));
+		for (int i = 0; i < j.nombreDeCartes(); i++) {
+			if (plateau.check((Domino)j.getHand().get(i)))
+				disponible.add((Domino)j.getHand().get(i));
 		}
 		return disponible;
 	}

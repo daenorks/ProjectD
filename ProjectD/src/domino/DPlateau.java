@@ -30,38 +30,38 @@ public class DPlateau extends Plateau {
 				|| check(d.getCarre2(), x2));
 	}
 
-	private void poserPremier(Domino d, boolean b) {
+	public void poserPremier(Domino d, boolean b) {
 		if (premier == null && dernier == null) {
 			premier = d.getCarre1();
 			dernier = d.getCarre2();
-			d.put(d, (this.taille(1) / 2), 0, (this.taille(1) / 2) + 1, 0);
+			put(d, (this.taille(1) / 2), 0, (this.taille(1) / 2) + 1, 0);
 			this.x1 = (this.taille(1) / 2);
 			this.x2 = x1 + 1;
 		}
 
 		else {
 			if (b)
-				d.put(d, x1 - 1, 0, x1 - 2, 0);
+				put(d, x1 - 1, 0, x1 - 2, 0);
 			else
-				d.put(d, x1 - 2, 0, x1 - 1, 0);
-			y1 -= 2;
+				put(d, x1 - 2, 0, x1 - 1, 0);
+			x1 -= 2;
 		}
 	}
 
-	private void poserDernier(Domino d, boolean b) {
+	public void poserDernier(Domino d, boolean b) {
 		if (premier == null && dernier == null) {
 			premier = d.getCarre1();
 			dernier = d.getCarre2();
-			d.put(d, (this.taille(1) / 2), 0, (this.taille(1) / 2) + 1, 0);
+			put(d, (this.taille(1) / 2), 0, (this.taille(1) / 2) + 1, 0);
 			this.x1 = (this.taille(1) / 2);
-			this.x2 = y1 + 1;
+			this.x2 = x1 + 1;
 		}
 
 		else {
 			if (b)
-				d.put(d, x2 + 1, 0, x1 + 2, 0);
+				put(d, x2 + 1, 0, x1 + 2, 0);
 			else
-				d.put(d, x2 + 2, 0, x1 + 1, 0);
+				put(d, x2 + 2, 0, x1 + 1, 0);
 			x2 += 2;
 		}
 	}
@@ -69,7 +69,7 @@ public class DPlateau extends Plateau {
 	public void afficher_vueclassique() {
 		int i = x1;
 		while (i < x2) {
-			System.out.println("[" + this.getCarre[1][i] + "|" + this.getCarre[i + 1][0] + "]");
+			System.out.println("[" + ((DCarre)this.getCarre(i,0)).getN() + "|" + ((DCarre)this.getCarre(i+1,0)).getN() + "]");
 			i += 2;
 		}
 	}

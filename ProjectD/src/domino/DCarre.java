@@ -65,9 +65,9 @@ public enum DCarre implements Carre {
 	public boolean egal(DCarre c) {
 		return (this.n == c.n);
 	}
-	
+
 	public int getN() {
-		return n;
+		return this.n;
 	}
 
 }

@@ -8,3 +8,4 @@ public class DJoueur extends Joueur {
 		super(p, x);
 	}
 }
+
