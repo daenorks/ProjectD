@@ -3,7 +3,6 @@ package basic;
 public abstract class TermController {
 	Jeu jeu;
 	TermView view;
-	Carte carte;
 
 	public void joueur() {
 		boolean actionDone = false;
@@ -14,9 +13,9 @@ public abstract class TermController {
 		//select card to play or pioche or passe
 		while (!actionDone) {
 			actionDone = askAction();
-			if (carte != null) {
+			if (jeu.getCarte() != null) {
 				//	if posable select where and the angle
-				if (carte.estPosable())
+				if (jeu.getCarte().estPosable())
 					actionDone = askPosition();
 				else askPlayer();
 			}

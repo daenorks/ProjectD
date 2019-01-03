@@ -53,6 +53,10 @@ public abstract class Plateau {
 	public Carre getCarre(int x, int y) {
 		return carres[x][y];
 	}
+	
+	public Carre[][] getCarres() {
+		return carres;
+	}
 
 	public int taille2() {
 		return carres.length;

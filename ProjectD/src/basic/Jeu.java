@@ -8,6 +8,7 @@ public abstract class Jeu {
 	protected Plateau plateau;
 	protected Joueur actuel;
 	protected int bloquer;
+	protected Carte carte;
 
 	void piocher() {
 		Carte c = pioche.pioche();
@@ -50,5 +51,13 @@ public abstract class Jeu {
 
 	Carre[][] getPCarres() {
 		return plateau.getCarres();
+	}
+
+	public Carte getCarte() {
+		return carte;
+	}
+
+	public void setCarte(Carte carte) {
+		this.carte = carte;
 	}
 }
