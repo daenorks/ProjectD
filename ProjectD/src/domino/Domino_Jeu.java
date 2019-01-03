@@ -14,7 +14,7 @@ public class Domino_Jeu {
 	public void demarrer(int x){
 		distribuer(x);
 		plateau = new DPlateau (x);
-		jouer()
+		jouer();
 	}
 	
 	public void distribuer(int x) { // distribue X dominos au hasard à chaque joueurs
