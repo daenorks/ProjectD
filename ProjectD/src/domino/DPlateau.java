@@ -51,7 +51,7 @@ public class DPlateau extends Plateau {
 	public void afficher_vueclassique() {
 		int i = getXGauche();
 		while (i < getXDroite()) {
-			System.out.println("[" + (this.getCarre(i,0)).getH() + "|" + this.getCarre(i+1,0).getH() + "]");
+			System.out.print("[" + (this.getCarre(i,0)).getH() + "|" + this.getCarre(i+1,0).getH() + "]");
 			i += 2;
 		}
 	}

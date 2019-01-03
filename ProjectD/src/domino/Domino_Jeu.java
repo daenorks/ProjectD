@@ -34,12 +34,12 @@ public class Domino_Jeu {
 			findepartie();
 			return;
 		}
-		for (DJoueur joueur : joueurs) {
-			actuel = joueur;
-			if (joueur.nombreDeCartes() == 1) {
+		for (int i = 0; i < joueurs.size(); i++) {
+			actuel = joueurs.get(i);
+			if (actuel.nombreDeCartes() == 1) {
 				if (poser()) {
-					classement.add(joueur);
-					joueurs.remove(joueur);
+					classement.add(actuel);
+					joueurs.remove(actuel);
 				}
 			} else
 				poser();
@@ -48,46 +48,50 @@ public class Domino_Jeu {
 	}
 
 	private boolean poser() {
-		Scanner scan = new Scanner(System.in);
 		boolean poser = false;
 		while (actuel.nombreDeCartes() > 0 && !poser) {
 			// montrer le jeu
 			afficher_vueclassique();
 			// choisir domino
 			afficher_mesdominos();
-			int d = choixAction(scan);
+			int d = choixAction();
 			// choisir placement ou de piocher
 			if (d == -1 ) {
 				poser = true;
 				joueurPioche();
 			}
-			else poser = placement((Domino) actuel.getHand().get(d), scan);
+			else poser = placement((Domino) actuel.getHand().get(d));
 		}
-		scan.close();
 		if (actuel.nombreDeCartes() == 0)
 			return true;
 		return false;
 	}
 
 	@SuppressWarnings("resource")
-	private int choixAction(Scanner scan) {
+	private int choixAction() {
+		Scanner scan = new Scanner(System.in);
 		System.out.println("Choisisez un domino parmis ceux disponible, num�rot�s de 0 � n"
 				+ "ou -1 pour piocher : ");
 		int x = scan.nextInt();
+		scan.nextLine();
+		scan.close();
 		if (x < -1 || x >= actuel.getHand().size()) {
 			System.out.println("Veuillez choisir un num�ro VALIDE !");
-			return choixAction(scan);
+			return choixAction();
 		} else
 			return x;
 	}
 
-	public boolean placement(Domino d, Scanner scan) {
+	public boolean placement(Domino d) {
 		System.out.println("Faites 0 pour poser a gauche, 1 pour poser a droite et 2 pour tourner le domino");
 		System.out.println("Faites -1 revenir au choix des dominos");
 		boolean poser = false;
 		while (!poser) {
+			Scanner scan = new Scanner(System.in);
 			d.afficher();
 			int x = scan.nextInt();
+			scan.nextLine();
+			scan.close();
 			switch (x) {
 			case 0:
 				poser = plateau.poserAGauche(d);
@@ -97,6 +101,7 @@ public class Domino_Jeu {
 				break;
 			case 2:
 				d.reverse();
+				break;
 			case -1:
 				return false;
 			default:
