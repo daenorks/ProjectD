@@ -41,4 +41,8 @@ public class Plateau {
 		cartes[x][y] = carte;
 	}
 	
+	public Plateau (Carre[][] c) {
+		this.cartes = c;
+	}
+	
 }

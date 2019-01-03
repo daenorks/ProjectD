@@ -12,4 +12,9 @@ public class DPlateau extends Plateau {
 		put(d.getCarre1(), x1, y1);
 		put(d.getCarre2(), x2, y2);
 	}
+	
+	public DPlateau (int x) {
+		Carre [][] c = new Carre [1][x];
+		super(c);
+	}
 }
