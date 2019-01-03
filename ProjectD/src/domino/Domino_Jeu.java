@@ -13,6 +13,7 @@ public class Domino_Jeu {
 		j.jouer_vueclassique();
 	}
 
+	public static Scanner scan = new Scanner(System.in);
 	final private DPlateau plateau;
 	private ArrayList<DJoueur> joueurs;
 	final private DPioche pioche;
@@ -80,11 +81,13 @@ public class Domino_Jeu {
 	}
 	
 	public int getInt() {
-		Scanner scan = new Scanner(System.in);
-		while (!scan.hasNextInt() && scan.hasNextLine())
-			scan.nextLine();
-		int x = scan.nextInt();
-		scan.close();
+		boolean hasX = false;
+		int x = 0;
+		while (!hasX)
+			try {
+				x = scan.nextInt();
+				hasX = true;
+			} catch (Exception e) {}
 		return x;
 	}
 
