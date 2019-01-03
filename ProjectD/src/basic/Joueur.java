@@ -16,7 +16,7 @@ public class Joueur {
 	}
 	
 	public void add(Pioche p, int x) {
-		for (int i = 0; i < x; x++)
+		for (int i = 0; i < x; i++)
 			hand.add(p.pioche());
 	}
 	
