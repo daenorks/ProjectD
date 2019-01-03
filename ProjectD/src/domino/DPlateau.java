@@ -5,11 +5,6 @@ import basic.Plateau;
 
 public class DPlateau extends Plateau {
 
-	private DCarre premier;
-	private int x1;
-	private DCarre dernier;
-	private int x2;
-
 	boolean check(DCarre c, int x) {
 		return check(c, x, 0);
 	}
@@ -18,67 +13,64 @@ public class DPlateau extends Plateau {
 		put(d.getCarre1(), x1, y1);
 		put(d.getCarre2(), x2, y2);
 	}
-
-	public DPlateau(int x) {
-		super(new Carre[x][0]);
+	
+	void put(Domino d, int x1, int x2) {
+		put(d, x1, 0, x2, 0);
 	}
 
-	boolean check(Domino d) {
-		if (premier == null && dernier == null)
-			return true;
-		return (check(d.getCarre1(), x1) || check(d.getCarre1(), x2) || check(d.getCarre2(), x1)
-				|| check(d.getCarre2(), x2));
+	public DPlateau(int x, Domino d) {
+		super(new Carre[x][1]);
+		carres[x/2][0] = d.getCarre1();
+		carres[x/2 + 1][0] = d.getCarre2();
 	}
 
-	public void poserPremier(Domino d, boolean b) {
-		if (premier == null && dernier == null) {
-			premier = d.getCarre1();
-			dernier = d.getCarre2();
-			put(d, (this.taille(1) / 2), 0, (this.taille(1) / 2) + 1, 0);
-			this.x1 = (this.taille(1) / 2);
-			this.x2 = x1 + 1;
-		}
-
-		else {
-			if (b)
-				put(d, x1 - 1, 0, x1 - 2, 0);
-			else
-				put(d, x1 - 2, 0, x1 - 1, 0);
-			x1 -= 2;
-		}
+	boolean check(Domino d, int x1, int y1, int x2, int y2) {
+		return (hasVoisin(x1, y1) || hasVoisin(x2, y2))
+				&& (check(d.getCarre1(), x1, y1))
+				&& (check(d.getCarre2(), x2, y2));
+	}
+	
+	boolean check(Domino d, int x1, int x2) {
+		return check(d, x1, 0, x2, 0);
 	}
 
-	public void poserDernier(Domino d, boolean b) {
-		if (premier == null && dernier == null) {
-			premier = d.getCarre1();
-			dernier = d.getCarre2();
-			put(d, (this.taille(1) / 2), 0, (this.taille(1) / 2) + 1, 0);
-			this.x1 = (this.taille(1) / 2);
-			this.x2 = x1 + 1;
-		}
+	public boolean poserAGauche(Domino d) {
+		int xgauche = getXGauche();
+		if (check(d, xgauche - 2, xgauche - 1)) put(d, xgauche - 2, xgauche - 1);
+		else return false;
+		return true;
+	}
 
-		else {
-			if (b)
-				put(d, x2 + 1, 0, x1 + 2, 0);
-			else
-				put(d, x2 + 2, 0, x1 + 1, 0);
-			x2 += 2;
-		}
+	public boolean poserADroite(Domino d) {
+		int xdroite = getXDroite();
+		if (check(d, xdroite + 1, xdroite + 2)) put(d, xdroite + 1, xdroite + 2);
+		else return false;
+		return true;
 	}
 
 	public void afficher_vueclassique() {
-		int i = x1;
-		while (i < x2) {
+		int i = getXGauche();
+		while (i < getXDroite()) {
 			System.out.println("[" + (this.getCarre(i,0)).getH() + "|" + this.getCarre(i+1,0).getH() + "]");
 			i += 2;
 		}
 	}
 
-	public int getX1() {
-		return this.x1;
+	public int getXGauche() {
+		int xgauche = 0;
+		while (xgauche < carres.length && carres[xgauche][0] == null)
+			xgauche++;
+		if (xgauche >= carres.length)
+			return -1; //Error
+		return xgauche;
 	}
 
-	public int getX2() {
-		return this.x2;
+	public int getXDroite() {
+		int xdroite = carres.length-1;
+		while (xdroite >= 0 && carres[xdroite][0] == null)
+			xdroite--;
+		if (xdroite < 0)
+			return -1; //Error
+		return xdroite;
 	}
 }

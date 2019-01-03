@@ -1,7 +1,6 @@
 package domino;
 
 import basic.Carte;
-import basic.Joueur;
 
 public class Domino implements Carte {
 	private DCarre carre1;
@@ -26,6 +25,12 @@ public class Domino implements Carte {
 	
 	public void afficher () {
 		System.out.println("[" + carre1.getN() + "|" + carre2.getN() + "]");
+	}
+	
+	public void reverse() {
+		DCarre d = carre1;
+		carre1 = carre2;
+		carre2 = d;
 	}
 
 }

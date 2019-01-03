@@ -6,9 +6,6 @@ import java.util.Collections;
 import basic.Carte;
 import basic.Pioche;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 public class DPioche extends Pioche {
 	public DPioche() {
 		ArrayList<Carte> dominos = new ArrayList<Carte>();
@@ -17,5 +14,11 @@ public class DPioche extends Pioche {
 				dominos.add(new Domino(DCarre.iDCarre(i), DCarre.iDCarre(b)));
 		Collections.shuffle(dominos);
 		hand = dominos;
+	}
+	
+	public Domino pioche() {
+		if (hand.size() == 0)
+			return null; // Error
+		return (Domino)hand.remove(0);
 	}
 }
