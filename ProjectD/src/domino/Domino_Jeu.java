@@ -3,28 +3,23 @@ import basic.Joueur;
 
 public class Domino_Jeu {
 	
-	private DPlateau plateau;
+	final private DPlateau plateau;
 	private ArrayList<DJoueur> joueurs;
-	private DPioche pioche;
+	final private DPioche pioche;
 	
-	public Domino_Jeu (){
+	public Domino_Jeu (int nbJoueurs){
 		joueurs = new ArrayList<DJoueur>();
+		pioche = new DPioche();
+		plateau = new DPlateau(120);
+		
 	}
 	
 	public void add (DJoueur j) {
 		joueurs.add(j);
 	}
 	
-	public void demarrer(int x){
-		distribuer(x);
-		plateau = new DPlateau (x);
-		jouer();
-	}
-	
-	public void distribuer(int x) { // distribue X dominos au hasard � chaque joueurs
-		for (int i = 0 ; i < joueurs.size() ; i++) {
-			joueurs(i).add(hasard(x))
-		}
+	public void distribuer(int x) {
+		
 	}
 	
 	

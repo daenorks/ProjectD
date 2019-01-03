@@ -9,8 +9,15 @@ public class Joueur {
 		return hand;
 	}
 	
-	public void add(Pioche p) {
-		this.hand = p.getHand();
+	public Joueur(Pioche p, int x) {
+		hand = new ArrayList<Carte>();
+		for (int i = 0; i < x; x++)
+			hand.add(p.pioche());
+	}
+	
+	public void add(Pioche p, int x) {
+		for (int i = 0; i < x; x++)
+			hand.add(p.pioche());
 	}
 	
 	public void remove(Carte carte) {
