@@ -19,8 +19,13 @@ public class Domino_Jeu {
 		for (int i = 0; i < nbJoueurs; i++)
 			joueurs.add(new DJoueur(pioche, nbCartes));
 	}
-
-	public ArrayList<DJoueur> jouer() {
+	
+	public void demarrer() {
+		jouer();
+	}
+	
+	
+	private void jouer() {
 		if (joueurs.size() == 0) {
 			return null // erreur
 		}
@@ -47,7 +52,7 @@ public class Domino_Jeu {
 		}
 	}
 	
-	public boolean bloque(boolean[] b) {
+	private boolean bloque(boolean[] b) {
 		if (pioche.size()>0) return false;
 		for (int i = 0; i < b.length; i++) {
 			if (b[i]) return false;
@@ -56,15 +61,10 @@ public class Domino_Jeu {
 	}
 	
 	
-	public void poser(DJoueur j) {
-		
+	private void poser(DJoueur j) {
 	}
 	
-	public ArrayList<DJoueur> findepartie(){
-		/*
-		 * affiche le classement
-		 * 
-		 */
-		return this.classement;
+	private void findepartie(){
+		return;
 	}
 }
