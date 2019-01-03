@@ -11,13 +11,13 @@ public class Domino_Jeu {
 	final private DPioche pioche;
 	private ArrayList<DJoueur> classement;
 	
-	public Domino_Jeu (int nbJoueurs){
+	public Domino_Jeu (int nbJoueurs, int nbCartes){
 		joueurs = new ArrayList<DJoueur>();
 		pioche = new DPioche();
 		plateau = new DPlateau(120);
 		classement = new ArrayList <DJoueur>();
 		for (int i = 0; i < nbJoueurs; i++)
-			joueurs.add(new DJoueur(pioche, 7));
+			joueurs.add(new DJoueur(pioche, nbCartes));
 	}
 
 	public void jouer() {
