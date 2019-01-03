@@ -44,12 +44,16 @@ public class Plateau {
 		this.carres = c;
 	}
 
-	public int taille(int x) {
-		return carres[x].length;
+	public int taille(int y) {
+		return carres[y].length;
 	}
 
 	public Carre getCarre(int x, int y) {
 		return carres[x][y];
+	}
+	
+	public int taille2() {
+		return carres.length;
 	}
 
 }
