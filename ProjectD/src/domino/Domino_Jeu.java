@@ -20,12 +20,7 @@ public class Domino_Jeu {
 			joueurs.add(new DJoueur(pioche, nbCartes));
 	}
 	
-	public void demarrer() {
-		jouer();
-	}
-	
-	
-	private void jouer() {
+	public void jouer() {
 		if (joueurs.size() == 0) {
 			return null // erreur
 		}
