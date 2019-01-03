@@ -15,6 +15,7 @@ public class Jeu {
 			actuel.add(c);
 		else
 			bloquer++;
+		prochain();
 	}
 
 	boolean bloquer() {
@@ -26,8 +27,13 @@ public class Jeu {
 		if (reussi) {
 			actuel.remove(carte);
 			bloquer = 0;
+			prochain();
 		}
 		return reussi;
+	}
+
+	private void prochain() {
+		actuel = joueurs.get(((joueurs.indexOf(actuel)) + 1) % joueurs.size());
 	}
 
 	ArrayList<Carte> getActualHand() {

@@ -14,4 +14,8 @@ public class Pioche {
 			return null; // Error
 		return hand.remove(0);
 	}
+	
+	public boolean isEmpty() {
+		return hand.isEmpty();
+	}
 }
