@@ -9,6 +9,10 @@ public class Joueur {
 		return hand;
 	}
 	
+	public void add(Pioche p) {
+		this.hand = p.getHand();
+	}
+	
 	public void remove(Carte carte) {
 		hand.remove(carte);
 	}
