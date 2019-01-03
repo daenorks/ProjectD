@@ -8,4 +8,5 @@ public interface Carre {
 	int getG();
 	int getB();
 	File getPicture();
+	String getView();
 }

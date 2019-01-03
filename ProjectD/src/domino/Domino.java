@@ -33,4 +33,10 @@ public class Domino implements Carte {
 		carre2 = d;
 	}
 
+	@Override
+	public boolean action() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

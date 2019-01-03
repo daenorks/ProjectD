@@ -1,7 +1,9 @@
 package basic;
 
-public class Plateau {
+public abstract class Plateau {
 	protected Carre[][] carres;
+
+	public abstract boolean poser(Carte carte, int side, int x, int y);
 
 	protected boolean check(Carre carre, int x, int y) {
 		if (x < 0 || y < 0 || x >= carres.length || y >= carres[0].length)
@@ -12,7 +14,7 @@ public class Plateau {
 		if (x < carres.length - 1 && carres[x + 1][y] != null)
 			if (carre.getD() != carres[x + 1][y].getG())
 				return false;
-		if (y < carres[x].length - 1 && carres[x][y + 1] != null) 
+		if (y < carres[x].length - 1 && carres[x][y + 1] != null)
 			if (carre.getH() != carres[x][y + 1].getB())
 				return false;
 		if (y > 0 && carres[x - 1][y] != null)
@@ -20,7 +22,7 @@ public class Plateau {
 				return false;
 		return true;
 	}
-	
+
 	protected boolean hasVoisin(int x, int y) {
 		return ((y < carres[x].length - 1 && carres[x][y + 1] != null)
 				|| (x < carres.length - 1 && carres[x + 1][y] != null)
@@ -28,13 +30,13 @@ public class Plateau {
 				|| (x > 0 && carres[x - 1][y] != null));
 	}
 
-	boolean checkPut(Carre carre, int x, int y) {
+	protected boolean checkPut(Carre carre, int x, int y) {
 		if (check(carre, x, y))
 			put(carre, x, y);
 		else
 			return false;
 		return true;
-	} 
+	}
 
 	protected void put(Carre carre, int x, int y) {
 		carres[x][y] = carre;
@@ -51,7 +53,7 @@ public class Plateau {
 	public Carre getCarre(int x, int y) {
 		return carres[x][y];
 	}
-	
+
 	public int taille2() {
 		return carres.length;
 	}

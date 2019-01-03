@@ -1,6 +1,7 @@
 package domino;
 
 import basic.Carre;
+import basic.Carte;
 import basic.Plateau;
 
 public class DPlateau extends Plateau {
@@ -8,7 +9,26 @@ public class DPlateau extends Plateau {
 	boolean check(DCarre c, int x) {
 		return check(c, x, 0);
 	}
-
+	
+	public boolean poser(Carte carte, int side , int x, int y) {
+		Domino d = (Domino) carte;
+		side = side % 4;
+		switch (side) {
+		case 0 : return poser(d, x, y, x + 1, y);
+		case 1 : return poser(d, x, y, x, y - 1);
+		case 2 : return poser(d, x, y, x - 1, y);
+		case 3 : return poser(d, x, y, x, y + 1);
+		default : return false;
+		}
+	}
+	
+	boolean poser(Domino d, int x1, int y1, int x2, int y2) {
+		if (check(d, x1, y1, x2, y2)) {
+			put(d, x1, y1, x2, y2);
+			return true;
+		}
+		return false;
+	}
 	void put(Domino d, int x1, int y1, int x2, int y2) {
 		put(d.getCarre1(), x1, y1);
 		put(d.getCarre2(), x2, y2);
