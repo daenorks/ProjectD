@@ -2,7 +2,7 @@ package basic;
 
 import java.util.ArrayList;
 
-public class Jeu {
+public abstract class Jeu {
 	protected ArrayList<Joueur> joueurs;
 	protected Pioche pioche;
 	protected Plateau plateau;
@@ -23,6 +23,7 @@ public class Jeu {
 	}
 
 	boolean utiliserCarte(Carte carte, int side, int x, int y) {
+		if (!actuel.peutPoser()) return false;
 		boolean reussi = carte.poser(plateau, side, x, y);
 		if (reussi) {
 			actuel.remove(carte);
@@ -31,6 +32,9 @@ public class Jeu {
 		}
 		return reussi;
 	}
+	
+	abstract boolean estFini();
+	abstract ArrayList<Joueur> lesGagnants();
 
 	private void prochain() {
 		actuel = joueurs.get(((joueurs.indexOf(actuel)) + 1) % joueurs.size());

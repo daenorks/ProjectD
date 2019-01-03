@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public class Joueur {
 	protected ArrayList<Carte> hand;
+	
+	public boolean peutPoser() {
+		return true;
+	}
 
 	public ArrayList<Carte> getHand() {
 		return hand;
