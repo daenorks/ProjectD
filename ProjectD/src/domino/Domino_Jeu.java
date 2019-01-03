@@ -57,7 +57,7 @@ public class Domino_Jeu {
 			afficher_mesdominos();
 			int d = choixAction();
 			// choisir placement ou de piocher
-			if (d == -1 ) {
+			if (d == -1 ) { 
 				poser = true;
 				joueurPioche();
 			}
