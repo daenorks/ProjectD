@@ -7,7 +7,7 @@ public class Domino implements Carte {
 	private DCarre carre1;
 	private DCarre carre2;
 	
-	public void hasard() { // retourne un domino au hasard
+	public void hasard() { // créer un domino au hasard
 		
 	}
 	

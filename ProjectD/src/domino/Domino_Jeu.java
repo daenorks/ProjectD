@@ -23,14 +23,7 @@ public class Domino_Jeu {
 	
 	public void distribuer(int x) { // distribue X dominos au hasard � chaque joueurs
 		for (int i = 0 ; i < joueurs.size() ; i++) {
-			
-			for (int j = 0; j < x; j++) {
-				
-				
-				
-			}
-			
-			
+			joueurs(i).add(hasard(x))
 		}
 	}
 	
