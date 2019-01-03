@@ -19,11 +19,11 @@ public abstract class Jeu {
 		prochain();
 	}
 
-	boolean bloquer() {
+	public boolean bloquer() {
 		return bloquer == joueurs.size();
 	}
 
-	boolean utiliserCarte(Carte carte, int side, int x, int y) {
+	public boolean utiliserCarte(Carte carte, int side, int x, int y) {
 		if (!actuel.peutPoser()) return false;
 		boolean reussi = carte.poser(plateau, side, x, y);
 		if (reussi) {
@@ -34,8 +34,8 @@ public abstract class Jeu {
 		return reussi;
 	}
 	
-	abstract boolean estFini();
-	abstract ArrayList<Joueur> lesGagnants();
+	public abstract boolean estFini();
+	public abstract ArrayList<Joueur> lesGagnants();
 
 	private void prochain() {
 		actuel = joueurs.get(((joueurs.indexOf(actuel)) + 1) % joueurs.size());
@@ -48,6 +48,7 @@ public abstract class Jeu {
 	ArrayList<Carte> getActualHand() {
 		return actuel.getHand();
 	}
+	
 
 	Carre[][] getPCarres() {
 		return plateau.getCarres();
