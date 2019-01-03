@@ -19,26 +19,48 @@ public class Domino_Jeu {
 		for (int i = 0; i < nbJoueurs; i++)
 			joueurs.add(new DJoueur(pioche, nbCartes));
 	}
-
+	
 	public void jouer() {
+
+		if (joueurs.size() == 0) {
+			return null // erreur
+		}
+		
+		boolean[][] bloquer = new boolean [joueurs.size()];
+		
 		for(int i = 0 ; i < joueurs.size(); i++) {
 			if (joueurs.get(i).nombreDeCartes() == 1) {
 				if (poser(joueurs.get(i))) {
 					classement.add(joueurs.get(i));
 					joueurs.remove(i);
+				} else {
+					bloquer[i]=false;
 				}
 			}
 		}
-		if (joueurs.size() <= 1) findepartie();
-		jouer();
-	}
-	
-	
-	public void poser(DJoueur j) {
 		
+		if(bloque(bloquer)) {
+			return findepartie();
+		}
+		
+		else {
+			return jouer();
+		}
 	}
 	
-	public void findepartie(){
+	private boolean bloque(boolean[] b) {
+		if (pioche.size()>0) return false;
+		for (int i = 0; i < b.length; i++) {
+			if (b[i]) return false;
+		}
+		return true;
+	}
+	
+	
+	private void poser(DJoueur j) {
+	}
+	
+	private void findepartie(){
 		return;
 	}
 }
