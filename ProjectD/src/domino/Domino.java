@@ -7,10 +7,6 @@ public class Domino implements Carte {
 	private DCarre carre1;
 	private DCarre carre2;
 	
-	public void hasard() { // créer un domino au hasard
-		
-	}
-	
 	public Domino(DCarre c1, DCarre c2) {
 		carre1 = c1;
 		carre2 = c2;
@@ -26,9 +22,12 @@ public class Domino implements Carte {
 	public boolean estPosable() {
 		return true;
 	}
-	@Override
-	public void jouerCarte(Joueur joueur) {
-		
+	
+	public boolean jouerCarte(Joueur joueur, DPlateau plateau, boolean droite) {
+		if (plateau.)
+		return false;
+		joueur.remove(this);
+		return true;
 	}
 	
 	

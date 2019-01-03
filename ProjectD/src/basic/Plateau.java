@@ -1,7 +1,7 @@
 package basic;
 
 public class Plateau {
-	Carre[][] cartes;
+	protected Carre[][] cartes;
 	
 	protected boolean check(Carre carte, int x, int y) {
 		int i = 0;

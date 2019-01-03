@@ -15,6 +15,18 @@ public class DPlateau extends Plateau {
 	}
 	
 	public DPlateau (int x) {
-		super(new Carre [1][x]);
+		super(new Carre [x][1]);
 	}
+	
+	boolean check(Domino d, boolean droite) {
+		int x = cartes.length;
+		while (cartes[x][1] != null) {
+			if (droite) x++;
+			else x--;
+		}
+		//TODO
+		return false;
+	}
+	
+	
 }

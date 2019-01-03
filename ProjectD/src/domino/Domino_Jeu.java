@@ -21,7 +21,6 @@ public class Domino_Jeu {
 	}
 
 	public void jouer() {
-		if (joueurs.size() == 0) findepartie();
 		for(int i = 0 ; i < joueurs.size(); i++) {
 			if (joueurs.get(i).nombreDeCartes() == 1) {
 				if (poser(joueurs.get(i))) {
@@ -30,6 +29,7 @@ public class Domino_Jeu {
 				}
 			}
 		}
+		if (joueurs.size() <= 1) findepartie();
 		jouer();
 	}
 	
