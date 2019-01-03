@@ -69,7 +69,7 @@ public class DPlateau extends Plateau {
 	public void afficher_vueclassique() {
 		int i = x1;
 		while (i < x2) {
-			System.out.println("[" + ((DCarre)this.getCarre(i,0)).getN() + "|" + ((DCarre)this.getCarre(i+1,0)).getN() + "]");
+			System.out.println("[" + (this.getCarre(i,0)).getH() + "|" + this.getCarre(i+1,0).getH() + "]");
 			i += 2;
 		}
 	}

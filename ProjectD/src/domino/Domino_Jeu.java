@@ -2,9 +2,6 @@ package domino;
 
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.LinkedList;
-
-import basic.Joueur;
 
 public class Domino_Jeu {
 
@@ -78,7 +75,7 @@ public class Domino_Jeu {
 			afficher_mesdominos(d1);
 			java.util.Scanner scan = new Scanner(System.in);
 			Domino c = new Domino(null,null);
-			System.out.println("Choisisez un domino parmis ceux disponible, numérotés de 0 à n: ");
+			System.out.println("Choisisez un domino parmis ceux disponible, numï¿½rotï¿½s de 0 ï¿½ n: ");
 			int iterateur=0;
 			int aux=0;
 			boolean bool=true;
@@ -87,7 +84,7 @@ public class Domino_Jeu {
 				{
 
 				default :
-					System.out.println("entrez une option (numérique) VALIDE !");
+					System.out.println("entrez une option (numï¿½rique) VALIDE !");
 					break;
 				case 0:
 					afficher_mesdominos(disponible);
@@ -163,7 +160,7 @@ public class Domino_Jeu {
 		Scanner scan = new Scanner(System.in);
 		int x = scan.nextInt();
 		if (x < 0 || x >= al.size()) {
-			System.out.println("Veuillez choisir un numéro de domino VALIDE !");
+			System.out.println("Veuillez choisir un numï¿½ro de domino VALIDE !");
 			scan.close();
 			return choixDomino(al);
 		} else
@@ -178,17 +175,17 @@ public class Domino_Jeu {
 
 		if (plateau.check(c.getCarre1(), plateau.getX1())) {
 			System.out.println(
-					"Pour ajouter le domino numéro au debut dans son orientation inversée, appuyez sur 2");
+					"Pour ajouter le domino numï¿½ro au debut dans son orientation inversï¿½e, appuyez sur 2");
 		}
 
 		if (plateau.check(c.getCarre1(), plateau.getX2())) {
 			System.out.println(
-					"Pour ajouter le domino numéro  a la fin dans son orientation normale, appuyez sur 3");
+					"Pour ajouter le domino numï¿½ro  a la fin dans son orientation normale, appuyez sur 3");
 		}
 
 		if (plateau.check(c.getCarre2(), plateau.getX2())) {
 			System.out.println(
-					"Pour ajouter le domino numéro a la fin dans son orientation inversée, appuyez sur 4");
+					"Pour ajouter le domino numï¿½ro a la fin dans son orientation inversï¿½e, appuyez sur 4");
 		}
 
 		System.out.println("Faites -1 revenir au choix des dominos, -2 pour quitter le programme");
