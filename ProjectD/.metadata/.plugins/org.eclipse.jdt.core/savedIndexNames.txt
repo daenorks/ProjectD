@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+C:\GITHUB\ProjectD\ProjectD\.metadata\.plugins\org.eclipse.jdt.core
+1215805760.index

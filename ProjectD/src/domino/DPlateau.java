@@ -38,6 +38,12 @@ public class DPlateau extends Plateau {
 		put(d, x1, 0, x2, 0);
 	}
 
+	public DPlateau (int x, int y, Domino d) {
+		super(new Carre[x][y]);
+		carres[x/2][y/2] = d.getCarre1();
+		carres[x/2+1][y/2] = d.getCarre2();
+	}
+	
 	public DPlateau(int x, Domino d) {
 		super(new Carre[x][1]);
 		carres[x/2][0] = d.getCarre1();
