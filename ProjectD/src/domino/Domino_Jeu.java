@@ -17,12 +17,13 @@ public class Domino_Jeu {
 		joueurs.add(j);
 	}
 	
-	public void demarrer(int x){
+	public void demarrer(int x, int y){
 		if (joueurs.size() == 0) {
 			// leve une exception
 			return;
 		}
 		distribuer(x);
+		DPioche = hasard(y);
 		plateau = new DPlateau (x);
 		jouer();
 	}
@@ -35,9 +36,7 @@ public class Domino_Jeu {
 	
 	
 	public void jouer() {
-		
 		if (joueurs.size() == 0) findepartie();
-		
 		for(int i = 0 ; i < joueurs.size(); i++) {
 			if (joueurs.get(i).nombreDeCartes() == 1) {
 				if (poser(joueurs.get(i))) {
