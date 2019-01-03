@@ -9,7 +9,9 @@ public class Pioche {
 		return hand;
 	}
 	
-	public Carte pioche(Carte carte) {
-		hand.remove(carte);
+	public Carte pioche() {
+		if (hand.size() == 0)
+			return null; //Error
+		return hand.remove(0);
 	}
 }
