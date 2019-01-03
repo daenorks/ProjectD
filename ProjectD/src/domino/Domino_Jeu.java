@@ -19,7 +19,7 @@ public class Domino_Jeu {
 		for (int i = 0; i < nbJoueurs; i++)
 			joueurs.add(new DJoueur(pioche, 7));
 	}
-	
+
 	public void jouer() {
 		if (joueurs.size() == 0) findepartie();
 		for(int i = 0 ; i < joueurs.size(); i++) {
