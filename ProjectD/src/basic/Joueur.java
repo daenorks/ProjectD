@@ -11,7 +11,7 @@ public class Joueur {
 	
 	public Joueur(Pioche p, int x) {
 		hand = new ArrayList<Carte>();
-		for (int i = 0; i < x; x++)
+		for (int i = 0; i < x; i++)
 			hand.add(p.pioche());
 	}
 	
