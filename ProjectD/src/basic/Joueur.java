@@ -10,6 +10,14 @@ public class Joueur {
 	}
 	
 	public void remove(Carte carte) {
-		
+		hand.remove(carte);
+	}
+	
+	public void add(Carte carte) {
+		hand.add(carte);
+	}
+	
+	public int nombreDeCartes() {
+		return hand.size();
 	}
 }
