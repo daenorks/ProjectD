@@ -27,5 +27,5 @@ public abstract class TermController {
 
 	protected abstract boolean askPosition();
 
-	private boolean askAction();
+	protected abstract boolean askAction();
 }
