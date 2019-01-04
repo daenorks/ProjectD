@@ -24,22 +24,40 @@ public enum SCarte implements Carte, Carre {
 	CTRESOR2(0,1,1,0, true, true,"../ressources/SaboteurCache.png"),
 	CTRESOR3(1,1,1,1,true, true, "../ressources/SaboteurCache.png"),
 	SLampe("../ressources/SaboteurLampe0.png") {
-		
+		@Override
+		public boolean action(Joueur j) {
+			return true;
+		}
 	},
 	SOutil("../ressources/SaboteurLampe0.png") {
-		
+		@Override
+		public boolean action(Joueur j) {
+			return true;
+		}
 	},
 	SChariot("../ressources/SaboteurChariot0.png") {
-		
+		@Override
+		public boolean action(Joueur j) {
+			return true;
+		}
 	},
 	RLampe("../ressources/SaboteurLampe1.png") {
-		
+		@Override
+		public boolean action(Joueur j) {
+			return true;
+		}
 	},
 	ROutil("../ressources/SaboteurOutil1.png") {
-		
+		@Override
+		public boolean action(Joueur j) {
+			return true;
+		}
 	},
 	RChariot("../ressources/SaboteurChariot1.png") {
-		
+		@Override
+		public boolean action(Joueur j) {
+			return true;
+		}
 	};
 
 
