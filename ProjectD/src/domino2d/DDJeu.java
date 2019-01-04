@@ -8,7 +8,6 @@ import basic.Jeu;
 import basic.Joueur;
 
 public class DDJeu extends Jeu {
-	private ArrayList<Joueur> classement;
 
 	public DDJeu(int nbJoueurs, int nbCartes, int x, int y) {
 		joueurs = new ArrayList<Joueur>();
@@ -35,14 +34,12 @@ public class DDJeu extends Jeu {
 
 	@Override
 	public boolean estFini() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public ArrayList<Joueur> lesGagnants() {
-		// TODO Auto-generated method stub
-		return null;
+		if (joueurs.size() <= 1) {
+			if(joueurs.size() == 1)
+				classement.add(joueurs.remove(0));
+			return true;
+		}
+		else return false;
 	}
 
 	public static void main(String[] args) {
@@ -56,7 +53,19 @@ public class DDJeu extends Jeu {
 
 	@Override
 	protected void prochainTourSup() {
-		if (getActualHand().size() == 0) ;
+
+	}
+	
+	@Override
+	protected void prochainJoueur() {
+		int i = joueurs.indexOf(actuel);
+		if (getActualHand().size() == 0) {
+			joueurs.remove(actuel);
+			classement.add(actuel);
+			actuel = joueurs.get(i%joueurs.size());
+		}
+		else
+			actuel = joueurs.get((i + 1)%joueurs.size());
 	}
 
 }
