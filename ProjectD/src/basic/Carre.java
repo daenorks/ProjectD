@@ -21,8 +21,6 @@ public interface Carre {
 
 	default JButton getButton() {
 		JButton button = new JButton(getIcon());
-		button.setBorder(BorderFactory.createEmptyBorder());
-		button.setContentAreaFilled(false);
 		return button;
 	}
 }

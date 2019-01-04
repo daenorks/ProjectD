@@ -3,6 +3,8 @@ package domino2d;
 import java.awt.Container;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+
 import basic.Carte;
 import basic.Joueur;
 
@@ -45,8 +47,8 @@ public class Domino implements Carte {
 
 	@Override
 	public Container getCont(ActionListener e) {
-		// TODO Auto-generated method stub
-		return null;
+		//TODO
+		return new JButton("dom");
 	}
 
 	@Override

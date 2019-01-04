@@ -1,6 +1,7 @@
 package domino2d;
 
 import java.awt.Image;
+import java.awt.image.ImageObserver;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -82,6 +83,7 @@ public enum DCarre implements Carre {
 		try {
 			image = ImageIO.read(getClass().getResource(str));
 		} catch (IOException e) {
+			System.out.println("da");
 			e.printStackTrace();
 		}
 		ImageIcon icon = new ImageIcon(image);
