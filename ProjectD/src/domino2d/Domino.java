@@ -40,7 +40,6 @@ public class Domino implements Carte {
 
 	@Override
 	public boolean action(Joueur j) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -52,14 +51,12 @@ public class Domino implements Carte {
 
 	@Override
 	public int getSide() {
-		// TODO Auto-generated method stub
 		return side;
 	}
 
 	@Override
 	public void setSide(int s) {
-		// TODO Auto-generated method stub
-		
+		side = s;
 	}
 
 }

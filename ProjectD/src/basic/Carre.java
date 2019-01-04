@@ -12,6 +12,7 @@ public interface Carre {
 	int getG();
 	int getB();
 	Icon getIcon();
+	Icon toIcon(String str);
 	default JButton getButton() {
 		JButton button = new JButton(getIcon());
 		button.setBorder(BorderFactory.createEmptyBorder());

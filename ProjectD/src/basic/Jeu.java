@@ -12,9 +12,13 @@ public abstract class Jeu {
 	protected State state;
 	protected boolean passe, defausse, canPioche;
 	
+	public enum State {
+		CHOOSEACTION(),
+		CHOOSECARTEACTION(),
+	}
+	
 	public abstract boolean estFini();
 	public abstract ArrayList<Joueur> lesGagnants();
-	public abstract void nextState();
 	
 	public boolean poserCarte(int x, int y) {
 		if (carte == null)
@@ -75,11 +79,6 @@ public abstract class Jeu {
 	
 	public boolean canPioche() {
 		return canPioche;
-	}
-
-	public enum State {
-		CHOOSEACTION(),
-		CHOOSECARTEACTION(),
 	}
 
 	public boolean bloquer() {

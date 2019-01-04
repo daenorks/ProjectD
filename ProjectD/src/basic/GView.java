@@ -30,6 +30,7 @@ public class GView extends JFrame {
 		all.add(buildJoueur(jeu.actuel), BorderLayout.LINE_START);
 		all.add(buildPlateau(), BorderLayout.CENTER);
 		all.add(buildAction(), BorderLayout.PAGE_END);
+		setVisible(true);
 	}
 	
 	private Container buildAction() {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import basic.Jeu;
 import basic.Joueur;
+import trash.Domino2D_jeu;
 
 public class DDJeu extends Jeu {
 	private ArrayList<Joueur> classement;
@@ -29,10 +30,9 @@ public class DDJeu extends Jeu {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	protected void prochainTour() {
-		// TODO Auto-generated method stub
+	
+	public static void main(String[] args) {
+		Domino2D_jeu j = new Domino2D_jeu(2, 5);
 		
 	}
 }
