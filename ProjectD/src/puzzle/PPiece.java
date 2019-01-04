@@ -3,12 +3,17 @@ package puzzle;
 import java.awt.*;
 import java.awt.Container;
 import java.awt.event.ActionListener;
-
+import java.io.File; 
 import javax.swing.Icon;
-
+import javax.imageio.ImageIO;
+import java.io.IOException;
 import basic.Carre;
 import basic.Carte;
 import basic.Joueur;
+import java.awt.image.*;
+import javax.swing.* ;
+import java.awt.*;
+import javax.swing.ImageIcon ;
 
 public class PPiece implements Carte, Carre {
 	
@@ -17,43 +22,40 @@ public class PPiece implements Carte, Carre {
 
 	public PPiece (int id_piece, File f) {
 		this.id_piece = id_piece;
-		this.icon = toIcon(f);
+		this.icon = toIcon(f.toString());
 	}
 	
 	public PPiece (int id_piece, Image img) {
 		this.id_piece = id_piece;
-		this.icon = (Icone) new ImageIcone(img); // cast à voir
+		this.icon = (Icon) new ImageIcon(img); // cast à voir
 	}
 	
-	@Override
 	public int getH() {
 		return this.id_piece;
 	}
 	
-	@Override
-	public Icone getIcone() {
+	public Icon getIcon() {
 		return this.icon;
 	}
 
-	@Override
 	public int getD() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
+
 	public int getG() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
+
 	public int getB() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
+
 	public Icon toIcon(String str) {
 		Image image = null;
 		try {
@@ -94,5 +96,5 @@ public class PPiece implements Carte, Carre {
 		// TODO Auto-generated method stub
 
 	}
-
+	
 }
