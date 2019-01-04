@@ -20,16 +20,27 @@ public enum SCarte implements Carte, Carre {
 	C6(0,1,0,1,false,true,"../ressources/SaboteurChemin6.png"),
 	C7(1,0,1,1,false,false,"../ressources/SaboteurChemin7.png"), // SaboteurChemin 7 n est pas traversable.
 	C8(1,1,0,0,false,true,"../ressources/SaboteurChemin8.png"),
-	CTRESOR1(1,0,1,0,true,"../ressources/SaboteurCache.png"),
-	CTRESOR2(0,1,1,0,true,"../ressources/SaboteurCache.png"),
-	CTRESOR3(1,1,1,1,true,"../ressources/SaboteurCache.png"),
-	
-	SLampe("../ressources/SaboteurLampe0.png"),
-	SOutil("../ressources/SaboteurLampe0.png"),
-	SChariot("../ressources/SaboteurChariot0.png"),
-	RLampe("../ressources/SaboteurLampe1.png"),
-	ROutil("../ressources/SaboteurOutil1.png"),
-	RChariot("../ressources/SaboteurChariot1.png");
+	CTRESOR1(1,0,1,0,true, true, "../ressources/SaboteurCache.png"),
+	CTRESOR2(0,1,1,0, true, true,"../ressources/SaboteurCache.png"),
+	CTRESOR3(1,1,1,1,true, true, "../ressources/SaboteurCache.png"),
+	SLampe("../ressources/SaboteurLampe0.png") {
+		
+	},
+	SOutil("../ressources/SaboteurLampe0.png") {
+		
+	},
+	SChariot("../ressources/SaboteurChariot0.png") {
+		
+	},
+	RLampe("../ressources/SaboteurLampe1.png") {
+		
+	},
+	ROutil("../ressources/SaboteurOutil1.png") {
+		
+	},
+	RChariot("../ressources/SaboteurChariot1.png") {
+		
+	};
 
 
 	
@@ -66,9 +77,6 @@ public enum SCarte implements Carte, Carre {
 	private Icon toIcon(String file) {
 		// TODO Auto-generated method stub
 		return null;
-
-	public SCarte(File f) {
-		this.file = f;
 	}
 	
 
@@ -118,15 +126,15 @@ public enum SCarte implements Carte, Carre {
 	public void revele() {
 		switch (this) {
 		case CTRESOR1:
-			this.file = "../ressources/SaboteurTresor0.png";
+			this.icon = toIcon("../ressources/SaboteurTresor0.png");
 			break;
 		case CTRESOR2:
-			this.file = "../ressources/SaboteurTresor0bis.png";
+			this.icon = toIcon("../ressources/SaboteurTresor0bis.png");
 			break;
 		case CTRESOR3:
-			this.file = "../ressources/SaboteurTresor1.png";
+			this.icon = toIcon("../ressources/SaboteurTresor1.png");
 			break;
-		case default:
+		default:
 			break;
 		}
 	}
