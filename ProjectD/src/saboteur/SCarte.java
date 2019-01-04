@@ -143,7 +143,6 @@ public enum SCarte implements Carte, Carre {
 	public void revele() {
 		switch (this) {
 		case CTRESOR1:
-			
 			this.file = "fichier";
 			break;
 		case CTRESOR2:

@@ -23,6 +23,8 @@ public class SPlateau extends Plateau {
 	}
 	
 	public boolean[] parcourir() {
+		revele(c);
+		parcours();
 		// parcours tous les chemins jusqu'au tresor, si possible. Si non renvoit false;
 	}
 	
