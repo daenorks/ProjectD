@@ -15,10 +15,4 @@ public class DPioche extends Pioche {
 		Collections.shuffle(dominos);
 		hand = dominos;
 	}
-	
-	public Domino pioche() {
-		if (hand.size() == 0)
-			return null; // Error
-		return (Domino)hand.remove(0);
-	}
 }

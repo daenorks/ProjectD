@@ -26,21 +26,34 @@ public class GView extends JFrame {
 	}
 	
 	private Component buildPasser(GController gc) {
-		// TODO Auto-generated method stub
-		return null;
+		JButton button = new JButton("Passe");
+		button.addActionListener(e -> {gc.passe();});
+		return button;
 	}
 
 	private Component buildPioche(GController gc) {
-		// TODO Auto-generated method stub
-		return null;
+		JButton button = new JButton("Pioche");
+		button.addActionListener(e -> {gc.pioche();});
+		return button;
 	}
 
 	private JButton carrePlateau(Carre carre, int x, int y, GController gc) {
-		JButton button = carre.getButton();
+		JButton button = null;
+		if (carre == null)
+			button = fillerButton();
+		else
+			button = carre.getButton();
 		button.addActionListener(e -> {gc.clickPlateauXY(x, y);});
 		return button;
-	}
+	}	
 	
+	private JButton fillerButton() {
+		JButton button = new JButton();
+		button.setBorder(BorderFactory.createEmptyBorder());
+		button.setContentAreaFilled(false);
+		return button;
+	}
+
 	private Container carteMain(Carte carte, int x, GController gc) {
 		return carte.getCont(e -> {gc.clickCarteX(x);});
 	}

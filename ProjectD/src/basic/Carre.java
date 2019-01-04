@@ -11,7 +11,6 @@ public interface Carre {
 	int getD();
 	int getG();
 	int getB();
-	File getPicture();
 	Icon getIcon();
 	default JButton getButton() {
 		JButton button = new JButton(getIcon());

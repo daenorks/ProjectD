@@ -2,14 +2,17 @@ package domino;
 
 import java.io.File;
 
+import javax.swing.Icon;
+
 import basic.Carre;
 
 public enum DCarre implements Carre {
-	C0(0, "Dice0.png"), C1(1, "Dice1.png"), C2(2, "Dice2.png"),C3(3, "Dice3.png"), C4(4, "Dice4.png"),
-	C5(5, "Dice5.png"), C6(6, "Dice6.png");
+	C0(0, "ressources/Dice0.png"), C1(1, "ressources/Dice1.png"), C2(2, "ressources/Dice2.png"),
+	C3(3, "ressources/Dice3.png"), C4(4, "ressources/Dice4.png"), C5(5, "ressources/Dice5.png"),
+	C6(6, "ressources/Dice6.png");
 
 	private int n;
-	private File file;
+	private Icon icon;
 
 	public static DCarre iDCarre(int i) {
 		switch (i) {
@@ -34,7 +37,8 @@ public enum DCarre implements Carre {
 
 	private DCarre(int n, String file) {
 		this.n = n;
-		this.file = new File(file);
+		//TODO icon
+		this.icon = null;
 	}
 
 	@Override
@@ -57,11 +61,6 @@ public enum DCarre implements Carre {
 		return n;
 	}
 
-	@Override
-	public File getPicture() {
-		return file;
-	}
-
 	public boolean egal(DCarre c) {
 		return (this.n == c.n);
 	}
@@ -71,9 +70,7 @@ public enum DCarre implements Carre {
 	}
 
 	@Override
-	public String getView() {
-		// TODO Auto-generated method stub
-		return null;
+	public Icon getIcon() {
+		return icon;
 	}
-
 }

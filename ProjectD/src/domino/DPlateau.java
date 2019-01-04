@@ -102,7 +102,6 @@ public class DPlateau extends Plateau {
 			}
 			System.out.print("\n");
 		}
-
 	}
 
 	public int getXGauche() {
