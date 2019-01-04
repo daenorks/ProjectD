@@ -21,7 +21,7 @@ public class PPiece implements Carte, Carre {
 	
 	@Override
 	public int getH() {
-		this.id_piece;
+		return this.id_piece;
 	}
 
 	@Override

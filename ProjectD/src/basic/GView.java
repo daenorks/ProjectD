@@ -45,7 +45,30 @@ public class GView extends JFrame {
 			button = carre.getButton();
 		button.addActionListener(e -> {gc.clickPlateauXY(x, y);});
 		return button;
-	}	
+	}
+	
+	private Container joueurs() {
+		Container joueurs = new Container();
+		for (Joueur j : jeu.getJoueurs())
+			;
+		return null;
+	}
+	
+	private Container choose() {
+		switch (jeu.getState()) {
+		case CHOOSEACTION :
+			break;
+		case CHOOSEPLAYER:
+			break;
+		case CHOOSESIDE:
+			break;
+		case CHOOSEXY:
+			break;
+		default:
+			break;
+		
+		}
+	}
 	
 	private JButton fillerButton() {
 		JButton button = new JButton();
