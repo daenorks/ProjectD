@@ -2,8 +2,13 @@ package domino2d;
 
 import java.util.ArrayList;
 
+import javax.swing.SwingUtilities;
+
+import basic.GView;
 import basic.Jeu;
 import basic.Joueur;
+import tp10.ImageEditModel;
+import tp10.ImageEditView;
 import trash.Domino2D_jeu;
 
 public class DDJeu extends Jeu {
@@ -32,7 +37,12 @@ public class DDJeu extends Jeu {
 	}
 	
 	public static void main(String[] args) {
-		Domino2D_jeu j = new Domino2D_jeu(2, 5);
-		
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				DDJeu j = new DDJeu(2, 5);
+				GView view = new GView(j);
+				}
+		});
 	}
+
 }
