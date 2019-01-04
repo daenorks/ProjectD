@@ -48,7 +48,14 @@ public class PPiece implements Carte, Carre {
 	}
 
 	@Override
-	public Icon getIcon() {
+	public Icon toIcon(String str) {
+		Image image = null;
+		try {
+			 image = ImageIO.read(getClass().getResource(str));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		ImageIcon icon = new ImageIcon(image);
 		return icon;
 	}
 

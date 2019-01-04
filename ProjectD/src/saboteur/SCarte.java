@@ -109,12 +109,16 @@ public enum SCarte implements Carte, Carre {
 		this.posable = true;
 	}
 
-
-	private Icon toIcon(String file) {
-		// TODO Auto-generated method stub
-		return null;
+	public Icon toIcon(String str) {
+		Image image = null;
+		try {
+			 image = ImageIO.read(getClass().getResource(str));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		ImageIcon icon = new ImageIcon(image);
+		return icon;
 	}
-
 
 	public boolean getTraversable() {
 		return this.traversable;

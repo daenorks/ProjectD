@@ -2,11 +2,14 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
+		<item value="" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="icon"/>
+			<item value="icone"/>
 			<item value="&#x09;&#x09;carres[x / 2][y / 2] = d.getCarre1();"/>
 		</list>
 		<list key="replacehistory">

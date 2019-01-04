@@ -14,15 +14,15 @@ public class PPlateau extends Plateau {
 	}
 
 	@Override
-	public boolean poser(Carte carte, int x, int y) {
+	public boolean poser(PPiece carte, Joueur j, int x, int y) {
 		if (plateau[x][y] != null)
 			return false;
 		put(carte, x, y);
-		actuel.remove(c);
+		j.remove(c);
 		return true;
 	}
 
-	public boolean retirer(int x, int y) {
+	public boolean retirer(Joueur j ,int x, int y) {
 		if ((x<0 || y<0) || (x>=plateau.length || y>=plateau[0].length)) 
 			return false;
 		if (plateau[x][y] == null)
@@ -30,7 +30,7 @@ public class PPlateau extends Plateau {
 		else {
 			Carte c = plateau[x][y];
 			plateau[x][y]=null;
-			actuel.add(c);
+			j.add(c);
 		}
 	}
 
@@ -49,7 +49,9 @@ public class PPlateau extends Plateau {
 	}
 	
 	public Image[] decouper(Image img){
-		Image []imag = new Image[x.length*y.length];
+		int x = plateau_final.length;
+		int y = plateau_final.[0]length;
+		Image []imag = new Image[x*y];
 		int c;
 		for (int i = 0; i < x.length; i++) {
             for (int j = 0; j < y.length; j++) {

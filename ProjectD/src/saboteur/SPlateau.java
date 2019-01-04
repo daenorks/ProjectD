@@ -69,7 +69,7 @@ public class SPlateau extends Plateau {
 				tresor_revele[2]=true;
 				b[2]=true;
 			}
-			break
+			break;
 		case CTRESOR3:
 			if(!tresor_revele[2]) {
 				sc.revele();
@@ -77,8 +77,6 @@ public class SPlateau extends Plateau {
 				b[2]=true;
 			}
 			break;
-		case default:
-				break;
 		}
 		
 		if((SCarte)carres[x][y].getTraversable()) {
