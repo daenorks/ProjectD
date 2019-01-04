@@ -13,7 +13,7 @@ import trash.Domino2D_jeu;
 
 public class DDJeu extends Jeu {
 	private ArrayList<Joueur> classement;
-	
+
 	public DDJeu(int nbJoueurs, int nbCartes) {
 		joueurs = new ArrayList<Joueur>();
 		pioche = new DPioche();
@@ -35,13 +35,13 @@ public class DDJeu extends Jeu {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				DDJeu j = new DDJeu(2, 5);
 				GView view = new GView(j);
-				}
+			}
 		});
 	}
 

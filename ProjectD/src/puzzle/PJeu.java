@@ -6,7 +6,7 @@ import basic.Jeu;
 import basic.Joueur;
 
 public class PJeu extends Jeu {
-	
+
 	@Override
 	public boolean estFini() {
 		return plateau.check_victoire();
@@ -20,9 +20,9 @@ public class PJeu extends Jeu {
 	@Override
 	protected void prochainTour() {
 		if (estFini()) {
-			//fin du jeu, puzzle termine
+			// fin du jeu, puzzle termine
 		} else {
-			
+
 		}
 	}
 

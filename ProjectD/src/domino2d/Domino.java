@@ -27,11 +27,11 @@ public class Domino implements Carte {
 	public boolean estPosable() {
 		return true;
 	}
-	
-	public void afficher () {
+
+	public void afficher() {
 		System.out.println("[" + carre1.getN() + "|" + carre2.getN() + "]");
 	}
-	
+
 	public void reverse() {
 		DCarre d = carre1;
 		carre1 = carre2;

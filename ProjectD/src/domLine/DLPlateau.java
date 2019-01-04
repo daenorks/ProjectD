@@ -13,7 +13,6 @@ public class DLPlateau extends DPlateau {
 		super(x, 1, d);
 	}
 
-
 	public boolean poserAGauche(Domino d) {
 		int xgauche = getXGauche();
 		if (check(d, xgauche - 2, xgauche - 1))
@@ -22,7 +21,7 @@ public class DLPlateau extends DPlateau {
 			return false;
 		return true;
 	}
-	
+
 	private void put(Domino d, int x1, int x2) {
 		put(d, x1, 0, x2, 0);
 	}
@@ -45,12 +44,13 @@ public class DLPlateau extends DPlateau {
 	}
 
 	public void afficher_vueclassique2() {
-		for (int i = this.taille2()-1; i > 0; i--) {
-			
+		for (int i = this.taille2() - 1; i > 0; i--) {
+
 			for (int j = 0; j < this.taille(i); j++) {
 				if (this.getCarre(j, i) != null)
 					System.out.print(this.getCarre(j, i).getH());
-				else System.out.print(" ");
+				else
+					System.out.print(" ");
 			}
 			System.out.print("\n");
 		}

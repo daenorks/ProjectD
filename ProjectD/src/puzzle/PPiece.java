@@ -11,25 +11,25 @@ import basic.Carte;
 import basic.Joueur;
 
 public class PPiece implements Carte, Carre {
-	
+
 	private int id_piece;
 	private Icon icon;
 
-	public PPiece (int id_piece, File f) {
+	public PPiece(int id_piece, File f) {
 		this.id_piece = id_piece;
 		this.icon = toIcon(f);
 	}
-	
-	public PPiece (int id_piece, Image img) {
+
+	public PPiece(int id_piece, Image img) {
 		this.id_piece = id_piece;
-		this.icon = (Icone) new ImageIcone(img); // cast à voir
+		this.icon = (Icone) new ImageIcone(img); // cast ï¿½ voir
 	}
-	
+
 	@Override
 	public int getH() {
 		return this.id_piece;
 	}
-	
+
 	@Override
 	public Icone getIcone() {
 		return this.icon;
@@ -57,7 +57,7 @@ public class PPiece implements Carte, Carre {
 	public Icon toIcon(String str) {
 		Image image = null;
 		try {
-			 image = ImageIO.read(getClass().getResource(str));
+			image = ImageIO.read(getClass().getResource(str));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

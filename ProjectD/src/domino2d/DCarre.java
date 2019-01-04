@@ -1,6 +1,5 @@
 package domino2d;
 
-
 import java.awt.Image;
 import java.io.IOException;
 
@@ -11,15 +10,11 @@ import javax.swing.ImageIcon;
 import basic.Carre;
 
 public enum DCarre implements Carre {
-	C0(0, "/ressources/Dice0.png"),
-	C1(1, "/ressources/Dice1.png"),
-	C2(2, "/ressources/Dice2.png"),
-	C3(3, "/ressources/Dice3.png"),
-	C4(4, "/ressources/Dice4.png"),
-	C5(5, "/ressources/Dice5.png"),
+	C0(0, "/ressources/Dice0.png"), C1(1, "/ressources/Dice1.png"), C2(2, "/ressources/Dice2.png"),
+	C3(3, "/ressources/Dice3.png"), C4(4, "/ressources/Dice4.png"), C5(5, "/ressources/Dice5.png"),
 	C6(6, "/ressources/Dice6.png");
 
-	private int n; 
+	private int n;
 	private Icon icon;
 
 	public static DCarre iDCarre(int i) {
@@ -75,7 +70,7 @@ public enum DCarre implements Carre {
 	public int getN() {
 		return this.n;
 	}
- 
+
 	@Override
 	public Icon getIcon() {
 		return icon;
@@ -85,7 +80,7 @@ public enum DCarre implements Carre {
 	public Icon toIcon(String str) {
 		Image image = null;
 		try {
-			 image = ImageIO.read(getClass().getResource(str));
+			image = ImageIO.read(getClass().getResource(str));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

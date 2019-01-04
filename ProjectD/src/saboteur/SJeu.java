@@ -8,12 +8,12 @@ import basic.Carte;
 public class SJeu extends Jeu {
 
 	ArrayList<Joueur> gagnants = new <Joueur>ArrayList();
-	
+
 	@Override
 	public boolean estFini() {
-		return ((SPlateau)plateau).partie_finie();
+		return ((SPlateau) plateau).partie_finie();
 	}
-	
+
 	@Override
 	public ArrayList<Joueur> lesGagnants() {
 		return this.gagnants;
@@ -35,7 +35,7 @@ public class SJeu extends Jeu {
 	}
 
 	public boolean utiliserCarte(Carte carte, Joueur c) {
-		// Utilisation d'une carte d'action seulement. c -> joueur ciblé
+		// Utilisation d'une carte d'action seulement. c -> joueur ciblï¿½
 		boolean b = (carte.action(c));
 		if (b) {
 			actuel.remove(carte);
@@ -48,8 +48,9 @@ public class SJeu extends Jeu {
 		boolean[] b = ((SPlateau) plateau).parcourir();
 		for (int i = 0; i < 3; i++) {
 			if (b[i]) {
-				if(gagnants.indexOf(actuel)==-1) gagnants.add(actuel);
-				actuel.addScore (((SPlateau) plateau).tresor[i]);
+				if (gagnants.indexOf(actuel) == -1)
+					gagnants.add(actuel);
+				actuel.addScore(((SPlateau) plateau).tresor[i]);
 			}
 		}
 	}

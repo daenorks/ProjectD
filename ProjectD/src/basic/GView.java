@@ -14,7 +14,7 @@ public class GView extends JFrame {
 	Container all;
 	Container action;
 	Container plateau;
-	
+
 	public void update() {
 		all.removeAll();
 		all.add(buildJoueur(jeu.actuel), BorderLayout.LINE_START);
@@ -23,7 +23,7 @@ public class GView extends JFrame {
 		all.revalidate();
 		repaint();
 	}
-	
+
 	public GView(Jeu jeu) {
 		this.jeu = jeu;
 		all = getContentPane();
@@ -32,7 +32,7 @@ public class GView extends JFrame {
 		all.add(buildAction(), BorderLayout.PAGE_END);
 		setVisible(true);
 	}
-	
+
 	private Container buildAction() {
 		if (jeu.getState() == State.CHOOSEACTION)
 			return buildActionChoix();
@@ -53,27 +53,29 @@ public class GView extends JFrame {
 		if (jeu.canPasse())
 			action.add(buildPasser());
 		for (Carte carte : main)
-				action.add(buildHandCarte(carte));
+			action.add(buildHandCarte(carte));
 		return action;
 	}
-	
+
 	private Container buildHandCarte(Carte carte) {
 		return carte.getCont(e -> {
 			jeu.setCarte(carte);
 		});
 	}
-	
+
 	private Container buildActionPasPosable() {
 		action = new Container();
-		if (jeu.canDef())if (jeu.defausse()) {
-			update();
-		};
-			action.add(buildDef());
+		if (jeu.canDef())
+			if (jeu.defausse()) {
+				update();
+			}
+		;
+		action.add(buildDef());
 		for (Joueur j : jeu.getJoueurs())
 			action.add(buildJoueur(j));
 		return action;
 	}
-	
+
 	private Container buildActionPosable() {
 		action = new Container();
 		if (jeu.canDef())
@@ -82,9 +84,10 @@ public class GView extends JFrame {
 		action.add(buildCarte());
 		return action;
 	}
-	
+
 	private Component buildCarte() {
-		return jeu.getCarte().getCont(e -> {});
+		return jeu.getCarte().getCont(e -> {
+		});
 	}
 
 	private Component buildRotate() {
@@ -101,18 +104,19 @@ public class GView extends JFrame {
 		button.addActionListener(e -> {
 			if (jeu.defausse()) {
 				update();
-			};
+			}
+			;
 		});
 		return button;
 	}
-
 
 	private JButton buildPasser() {
 		JButton button = new JButton("Passe");
 		button.addActionListener(e -> {
 			if (jeu.passer()) {
 				update();
-			};
+			}
+			;
 		});
 		return button;
 	}
@@ -122,16 +126,15 @@ public class GView extends JFrame {
 		button.addActionListener(e -> {
 			if (jeu.pioche()) {
 				update();
-			};
-		});  
+			}
+			;
+		});
 		return button;
 	}
-	
+
 	private JButton buildJoueur(Joueur j) {
-		JButton joueur = new JButton("Joueur " + j.getNumJ() + "\n"
-				+ (j.getBloquer()[0]?"Chariot casse":"") + "\n"
-				+ (j.getBloquer()[1]?"Outil casse":"") + "\n"
-				+ (j.getBloquer()[2]?"Lampe casse":"") + "\n");
+		JButton joueur = new JButton("Joueur " + j.getNumJ() + "\n" + (j.getBloquer()[0] ? "Chariot casse" : "") + "\n"
+				+ (j.getBloquer()[1] ? "Outil casse" : "") + "\n" + (j.getBloquer()[2] ? "Lampe casse" : "") + "\n");
 		return joueur;
 	}
 
@@ -144,11 +147,12 @@ public class GView extends JFrame {
 		button.addActionListener(e -> {
 			if (jeu.poserCarte(x, y)) {
 				update();
-			};
+			}
+			;
 		});
 		return button;
 	}
-	
+
 	private JButton fillerButton() {
 		JButton button = new JButton();
 		button.setBorder(BorderFactory.createEmptyBorder());

@@ -2,7 +2,7 @@ package trash;
 
 public abstract class TermView {
 	private Jeu jeu;
-	
+
 	public void afficherJeu() {
 		afficherPlateau();
 		if (jeu.getCarte() != null)
@@ -10,10 +10,11 @@ public abstract class TermView {
 		else
 			afficherCarte();
 	}
-	
+
 	public void afficherAction() {
-		
+
 	}
+
 	public void afficherPlateau() {
 		Carre[][] carres = jeu.getPCarres();
 		String[] strs = new String[carres.length];
@@ -23,5 +24,6 @@ public abstract class TermView {
 		for (int y = 0; y < strs.length; y++)
 			System.out.println(strs[y]);
 	}
+
 	public abstract void afficherCarte();
 }
