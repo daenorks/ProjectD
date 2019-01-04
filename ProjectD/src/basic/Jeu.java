@@ -63,4 +63,8 @@ public abstract class Jeu {
 	public void setCarte(Carte carte) {
 		this.carte = carte;
 	}
+	
+	
+	
+	
 }
