@@ -24,9 +24,11 @@ public abstract class Plateau {
 	}
 
 	protected boolean hasVoisin(int x, int y) {
+		if (x < 0 || y < 0 || x >= carres.length || y >= carres[0].length)
+			return false;
 		return ((y > 0 && carres[x][y - 1] != null)
 				|| (y < carres[x].length - 1 && carres[x][y + 1] != null)
-				|| (x < carres.length - 1 && carres[x + 1][y] != null)
+				|| (x < carres.length - 2 && carres[x + 1][y] != null)
 				|| (x > 0 && carres[x - 1][y] != null));
 	}
 

@@ -24,10 +24,11 @@ public class Joueur {
 		return hand;
 	}
 
-	public Joueur(Pioche p, int x) {
+	public Joueur(Pioche p, int x, int numJ) {
 		hand = new ArrayList<Carte>();
 		for (int i = 0; i < x; i++)
 			hand.add(p.pioche());
+		this.numJ = numJ;
 	}
 
 	public void add(Pioche p, int x) {

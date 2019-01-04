@@ -2,22 +2,18 @@ package domLine;
 
 import java.util.ArrayList;
 
+import javax.swing.SwingUtilities;
+
+import basic.GView;
 import basic.Jeu;
 import basic.Joueur;
-import domino2d.DPioche;
-import domino2d.Domino;
+import domino2d.DDJeu;
 
-public class DLJeu extends Jeu {
+public class DLJeu extends DDJeu {
 	private ArrayList<Joueur> classement;
 
 	public DLJeu(int nbJoueurs, int nbCartes) {
-		joueurs = new ArrayList<Joueur>();
-		pioche = new DPioche();
-		plateau = new DLPlateau(60, (Domino) pioche.pioche());
-		classement = new ArrayList<Joueur>();
-		for (int i = 0; i < nbJoueurs; i++)
-			joueurs.add(new Joueur(pioche, nbCartes));
-		actuel = joueurs.get(0);
+		super(nbJoueurs, nbCartes, 40, 1);
 	}
 
 	@Override
@@ -30,14 +26,12 @@ public class DLJeu extends Jeu {
 		return classement;
 	}
 
-	@Override
-	protected void prochainTour() {
-		Joueur oldJ = actuel;
-		prochainJoueur();
-		if (oldJ.getHand().size() == 0) {
-			joueurs.remove(oldJ);
-			classement.add(oldJ);
-		}
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				DLJeu j = new DLJeu(2, 5);
+				GView view = new GView(j);
+			}
+		});
 	}
-
 }

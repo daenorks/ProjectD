@@ -10,13 +10,13 @@ import basic.Joueur;
 public class DDJeu extends Jeu {
 	private ArrayList<Joueur> classement;
 
-	public DDJeu(int nbJoueurs, int nbCartes) {
+	public DDJeu(int nbJoueurs, int nbCartes, int x, int y) {
 		joueurs = new ArrayList<Joueur>();
 		pioche = new DPioche();
-		plateau = new DPlateau(30, 30, (Domino) pioche.pioche());
+		plateau = new DPlateau(x, y, (Domino) pioche.pioche());
 		classement = new ArrayList<Joueur>();
 		for (int i = 0; i < nbJoueurs; i++)
-			joueurs.add(new Joueur(pioche, nbCartes));
+			joueurs.add(new Joueur(pioche, nbCartes, i));
 		actuel = joueurs.get(0);
 		state = State.CHOOSEACTION;
 		bloquer = 0;
@@ -24,6 +24,10 @@ public class DDJeu extends Jeu {
 		passe = false;
 		defausse = false;
 		canPioche = true;
+	}
+	
+	public DDJeu(int nbJoueurs, int nbCartes) {
+		this(nbJoueurs, nbCartes, 30, 30);
 	}
 
 	@Override
