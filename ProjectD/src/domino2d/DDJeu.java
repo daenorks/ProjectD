@@ -30,6 +30,9 @@ public class DDJeu extends Jeu {
 		this(nbJoueurs, nbCartes, 30, 30);
 	}
 
+	public DDJeu() {
+	}
+
 	@Override
 	public boolean estFini() {
 		// TODO Auto-generated method stub
