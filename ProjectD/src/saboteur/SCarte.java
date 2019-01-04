@@ -159,6 +159,8 @@ public enum SCarte implements Carte, Carre {
 		case CTRESOR3:
 			this.file = "../ressources/SaboteurTresor1.png";
 			break;
+		case default:
+			break;
 		}
 	}
 
