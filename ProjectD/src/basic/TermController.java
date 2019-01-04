@@ -36,7 +36,7 @@ public abstract class TermController {
 	protected abstract boolean askPosition();
 
 	protected boolean askAction() {
-		System.out.println("Choisisez un domino parmis ceux disponible, numerotes de 0 a n" + "ou -1 pour piocher : ");
+		System.out.println("Choisisez une carte/domino numerotes de 0 a n" + "ou -1 pour piocher : ");
 		int x = getInt();
 		if (x < -1 || x >= jeu.getActualHand().size()) {
 			System.out.println("Veuillez choisir un numero VALIDE !");

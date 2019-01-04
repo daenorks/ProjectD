@@ -16,20 +16,20 @@ public abstract class Jeu {
 			actuel.add(c);
 		else
 			bloquer++;
-		prochain();
+		prochainTour();
 	}
 
 	public boolean bloquer() {
 		return bloquer == joueurs.size();
 	}
 
-	public boolean utiliserCarte(Carte carte, int side, int x, int y) {
+	public boolean utiliserCarte(Carte carte, int x, int y) {
 		if (!actuel.peutPoser()) return false;
-		boolean reussi = carte.poser(plateau, side, x, y);
+		boolean reussi = carte.poser(plateau, x, y);
 		if (reussi) {
 			actuel.remove(carte);
 			bloquer = 0;
-			prochain();
+			prochainTour();
 		}
 		return reussi;
 	}
@@ -37,12 +37,14 @@ public abstract class Jeu {
 	public abstract boolean estFini();
 	public abstract ArrayList<Joueur> lesGagnants();
 
-	private void prochain() {
+	protected abstract void prochainTour();
+	
+	protected void prochainJoueur() {
 		actuel = joueurs.get(((joueurs.indexOf(actuel)) + 1) % joueurs.size());
 	}
 	
 	public void passerTour() {
-		prochain();
+		prochainTour();
 	}
 
 	ArrayList<Carte> getActualHand() {

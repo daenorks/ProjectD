@@ -3,7 +3,7 @@ package basic;
 public abstract class Plateau {
 	protected Carre[][] carres;
 
-	public abstract boolean poser(Carte carte, int side, int x, int y);
+	public abstract boolean poser(Carte carte, int x, int y);
 
 	protected boolean check(Carre carre, int x, int y) {
 		if (x < 0 || y < 0 || x >= carres.length || y >= carres[0].length)

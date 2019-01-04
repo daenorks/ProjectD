@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Joueur {
 	protected ArrayList<Carte> hand;
+	protected int numJ;
 	
 	public boolean peutPoser() {
 		return true;
@@ -34,5 +35,9 @@ public class Joueur {
 	
 	public int nombreDeCartes() {
 		return hand.size();
+	}
+
+	public int getNumJ() {
+		return numJ;
 	}
 }

@@ -1,6 +1,8 @@
-package domino;
+package domino2;
 
 import java.io.File;
+
+import javax.swing.JButton;
 
 import basic.Carre;
 
@@ -62,18 +64,7 @@ public enum DCarre implements Carre {
 		return file;
 	}
 
-	public boolean egal(DCarre c) {
-		return (this.n == c.n);
-	}
-
 	public int getN() {
 		return this.n;
 	}
-
-	@Override
-	public String getView() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

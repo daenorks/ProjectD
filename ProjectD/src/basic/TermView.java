@@ -3,8 +3,16 @@ package basic;
 public abstract class TermView {
 	private Jeu jeu;
 	
-	public void afficherMain() {
+	public void afficherJeu() {
+		afficherPlateau();
+		if (jeu.getCarte() != null)
+			afficherAction();
+		else
+			afficherCarte();
+	}
 	
+	public void afficherAction() {
+		
 	}
 	public void afficherPlateau() {
 		Carre[][] carres = jeu.getPCarres();
