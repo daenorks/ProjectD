@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Joueur {
 	protected ArrayList<Carte> hand;
 	protected int numJ;
-	protected boolean[] bloquer;
+	protected boolean[] bloquer = {false, false, false};
 	protected int score;
 	
 	public boolean peutPoser() {
@@ -15,6 +15,10 @@ public class Joueur {
 		return true;
 	}
 	
+	public boolean[] getBloquer() {
+		return bloquer;
+	}
+
 	public ArrayList<Carte> getHand() {
 		return hand;
 	}
