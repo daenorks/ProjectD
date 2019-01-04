@@ -9,14 +9,14 @@ public class PJeu extends Jeu {
 
 	@Override
 	public boolean estFini() {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
 	@Override
 	public ArrayList<Joueur> lesGagnants() {
 		// TODO Auto-generated method stub
-		return null;
+		return joueurs;
 	}
 
 	@Override

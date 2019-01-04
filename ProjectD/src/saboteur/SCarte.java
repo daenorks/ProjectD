@@ -12,24 +12,25 @@ import basic.Joueur;
 public enum SCarte implements Carte, Carre {
 
 	DEPART(1,1,1,1),
-	C1(1,0,1,1,false,true,"fichier"),
-	C2(1,1,0,1,false,true,"fichier"),
-	C3(0,0,0,1,false,true,"fichier"),
-	C4(1,1,1,1,false,true,"fichier"),
-	C5(0,0,1,1,false,true,"fichier"),		
-	C6(0,1,0,1,false,true,"fichier"),
-	C7(1,0,1,1,false,false,"fichier"), // SaboteurChemin 7 n est pas traversable.
-	C8(1,1,0,0,false,true,"fichier"),
-	CTRESOR1(1,0,1,0,true, true,"fichier"),
-	CTRESOR2(0,1,1,0,true, true,"fichier"),
-	CTRESOR3(1,1,1,1,true, true,"fichier"),
+	C1(1,0,1,1,false,true,"../ressources/SaboteurChemin1.png"),
+	C2(1,1,0,1,false,true,"../ressources/SaboteurChemin2.png"),
+	C3(0,0,0,1,false,true,"../ressources/SaboteurChemin3.png"),
+	C4(1,1,1,1,false,true,"../ressources/SaboteurChemin4.png"),
+	C5(0,0,1,1,false,true,"../ressources/SaboteurChemin5.png"),	
+	C6(0,1,0,1,false,true,"../ressources/SaboteurChemin6.png"),
+	C7(1,0,1,1,false,false,"../ressources/SaboteurChemin7.png"), // SaboteurChemin 7 n est pas traversable.
+	C8(1,1,0,0,false,true,"../ressources/SaboteurChemin8.png"),
+	CTRESOR1(1,0,1,0,true,"../ressources/SaboteurCache.png"),
+	CTRESOR2(0,1,1,0,true,"../ressources/SaboteurCache.png"),
+	CTRESOR3(1,1,1,1,true,"../ressources/SaboteurCache.png"),
 	
-	SLampe(),
-	SOutil(),
-	SChariot(),
-	RLampe(),
-	ROutil(),
-	RChariot();
+	SLampe("../ressources/SaboteurLampe0.png"),
+	SOutil("../ressources/SaboteurLampe0.png"),
+	SChariot("../ressources/SaboteurChariot0.png"),
+	RLampe("../ressources/SaboteurLampe1.png"),
+	ROutil("../ressources/SaboteurOutil1.png"),
+	RChariot("../ressources/SaboteurChariot1.png");
+
 
 	
 	private final int h;
@@ -43,12 +44,12 @@ public enum SCarte implements Carte, Carre {
 	private final boolean posable;
 	private Icon icon;
 	
-	public void SCarte(String file) {
+	private SCarte(String file) {
 		this.posable = false;
 		this.icon = toIcon(file);
 	}
 	
-	public void SCarte(int h, int g, int b, int d,
+	private SCarte(int h, int g, int b, int d,
 			boolean tresor,boolean traversable, String file) {
 		this.h=h;
 		this.b=b;
@@ -61,10 +62,15 @@ public enum SCarte implements Carte, Carre {
 		this.posable = true;
 	}
 
+
 	private Icon toIcon(String file) {
 		// TODO Auto-generated method stub
 		return null;
+
+	public SCarte(File f) {
+		this.file = f;
 	}
+	
 
 	public boolean getTraversable() {
 		return this.traversable;
@@ -112,13 +118,15 @@ public enum SCarte implements Carte, Carre {
 	public void revele() {
 		switch (this) {
 		case CTRESOR1:
-			this.file = "fichier";
+			this.file = "../ressources/SaboteurTresor0.png";
 			break;
 		case CTRESOR2:
-			this.file = "fichier";
+			this.file = "../ressources/SaboteurTresor0bis.png";
 			break;
 		case CTRESOR3:
-			this.file = "fichier";
+			this.file = "../ressources/SaboteurTresor1.png";
+			break;
+		case default:
 			break;
 		}
 	}
