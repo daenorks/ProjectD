@@ -21,7 +21,7 @@ public class PPiece implements Carte, Carre {
 	
 	public PPiece (int id_piece, Image img) {
 		this.id_piece = id_piece;
-		this.icon = new ImageIcone(img);
+		this.icon = (Icone) new ImageIcone(img); // cast à voir
 	}
 	
 	@Override
