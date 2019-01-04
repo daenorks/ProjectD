@@ -49,4 +49,12 @@ public class Joueur {
 	public int getNumJ() {
 		return numJ;
 	}
+	
+	public boolean getBloquer(int i) {
+		return bloquer[i];
+	}
+	
+	public void setBloquer(int i, boolean b) {
+		bloquer[i]==b;
+	}
 }
