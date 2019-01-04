@@ -9,6 +9,16 @@ public abstract class Jeu {
 	protected Joueur actuel;
 	protected int bloquer;
 	protected Carte carte;
+	protected State state;
+
+
+
+	public enum State {
+		CHOOSEACTION(),
+		CHOOSEPLAYER(),
+		CHOOSEXY(),
+		CHOOSESIDE();
+	}
 
 	void piocher() {
 		Carte c = pioche.pioche();
@@ -65,6 +75,17 @@ public abstract class Jeu {
 	}
 	
 	
+	public ArrayList<Joueur> getJoueurs() {
+		return joueurs;
+	}
 	
+	
+	public State getState() {
+		return state;
+	}
+
+	public void setState(State state) {
+		this.state = state;
+	}
 	
 }
