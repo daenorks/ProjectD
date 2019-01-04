@@ -45,31 +45,36 @@ public class GView extends JFrame {
 	}
 
 	private Container buildActionChoix() {
-		action = new Container();
+		Container b = new Container();
+		b.setLayout(new FlowLayout());
 		ArrayList<Carte> main = jeu.getActualHand();
 		if (jeu.canPioche)
-			action.add(buildPioche());
+			b.add(buildPioche());
 		if (jeu.canPasse())
-			action.add(buildPasser());
-		for (Carte carte : main)
-			action.add(buildHandCarte(carte));
-		return action;
+			b.add(buildPasser());
+		for (Carte carte : main) {
+			b.add(buildHandCarte(carte));
+		}
+		return b;
 	}
 
 	private Container buildHandCarte(Carte carte) {
 		return carte.getCont(e -> {
 			jeu.setCarte(carte);
+			update();
 		});
 	}
 
 	private Container buildActionPasPosable() {
 		action = new Container();
+		action.setLayout(new FlowLayout());
 		if (jeu.canDef())
 			if (jeu.defausse()) {
 				update();
 			}
 		;
 		action.add(buildDef());
+		action.add(buildRetour());
 		for (Joueur j : jeu.getJoueurs())
 			action.add(buildJoueur(j));
 		return action;
@@ -77,10 +82,12 @@ public class GView extends JFrame {
 
 	private Container buildActionPosable() {
 		action = new Container();
+		action.setLayout(new FlowLayout());
 		if (jeu.canDef())
 			action.add(buildDef());
 		action.add(buildRotate());
 		action.add(buildCarte());
+		action.add(buildRetour());
 		return action;
 	}
 
@@ -105,6 +112,15 @@ public class GView extends JFrame {
 				update();
 			}
 			;
+		});
+		return button;
+	}
+	
+	private JButton buildRetour() {
+		JButton button = new JButton("Retour");
+		button.addActionListener(e -> {
+			jeu.setInitalState();
+			update();
 		});
 		return button;
 	}

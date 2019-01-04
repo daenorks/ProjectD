@@ -4,8 +4,10 @@ import java.awt.Image;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 import basic.Carre;
 
@@ -87,5 +89,12 @@ public enum DCarre implements Carre {
 		}
 		ImageIcon icon = new ImageIcon(image);
 		return icon;
+	}
+	
+	public JButton getButton() {
+		JButton button = new JButton("" + getN());
+		button.setBorder(BorderFactory.createEmptyBorder());
+		//button.setContentAreaFilled(false);
+		return button;
 	}
 }

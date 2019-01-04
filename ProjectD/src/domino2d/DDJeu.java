@@ -40,7 +40,6 @@ public class DDJeu extends Jeu {
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
-			@Override
 			public void run() {
 				DDJeu j = new DDJeu(2, 5);
 				GView view = new GView(j);

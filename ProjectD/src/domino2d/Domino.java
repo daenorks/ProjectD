@@ -1,6 +1,7 @@
 package domino2d;
 
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -48,8 +49,12 @@ public class Domino implements Carte {
 
 	@Override
 	public Container getCont(ActionListener e) {
-		//TODO
-		return new JButton("dom");
+		Container c = new Container();
+		c.setLayout(new FlowLayout());
+		JButton b = new JButton(carre1.getN() + " " + carre2.getN());
+		b.addActionListener(e);
+		c.add(b);
+		return c;
 	}
 
 	@Override
