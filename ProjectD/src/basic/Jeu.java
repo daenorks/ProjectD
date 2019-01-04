@@ -11,15 +11,15 @@ public abstract class Jeu {
 	protected Carte carte;
 	protected State state;
 	protected boolean passe, defausse, canPioche;
-	
+
 	public enum State {
-		CHOOSEACTION(),
-		CHOOSECARTEACTION(),
+		CHOOSEACTION(), CHOOSECARTEACTION(),
 	}
-	
+
 	public abstract boolean estFini();
+
 	public abstract ArrayList<Joueur> lesGagnants();
-	
+
 	public boolean poserCarte(int x, int y) {
 		if (carte == null)
 			return false;
@@ -33,7 +33,7 @@ public abstract class Jeu {
 		}
 		return reussi;
 	}
-	
+
 	public boolean useCarte(Joueur j) {
 		if (carte == null)
 			return false;
@@ -47,7 +47,7 @@ public abstract class Jeu {
 		}
 		return reussi;
 	}
-	
+
 	public boolean pioche() {
 		if (!pioche.isEmpty())
 			actuel.add(pioche.pioche());
@@ -56,13 +56,13 @@ public abstract class Jeu {
 		prochainTour();
 		return true;
 	}
-	
+
 	public boolean defausse() {
 		actuel.remove(carte);
 		prochainTour();
 		return true;
 	}
-	
+
 	public boolean passer() {
 		bloquer++;
 		prochainTour();
@@ -72,11 +72,11 @@ public abstract class Jeu {
 	public boolean canPasse() {
 		return passe;
 	}
-	
+
 	public boolean canDef() {
 		return defausse;
 	}
-	
+
 	public boolean canPioche() {
 		return canPioche;
 	}
@@ -84,7 +84,7 @@ public abstract class Jeu {
 	public boolean bloquer() {
 		return bloquer == joueurs.size();
 	}
-	
+
 	protected void setInitalState() {
 		state = State.CHOOSEACTION;
 		carte = null;
@@ -94,11 +94,11 @@ public abstract class Jeu {
 		prochainJoueur();
 		setInitalState();
 	}
-	
+
 	protected void prochainJoueur() {
 		actuel = joueurs.get(((joueurs.indexOf(actuel)) + 1) % joueurs.size());
 	}
-	
+
 	public void passerTour() {
 		prochainTour();
 	}
@@ -106,7 +106,6 @@ public abstract class Jeu {
 	ArrayList<Carte> getActualHand() {
 		return actuel.getHand();
 	}
-	
 
 	Carre[][] getPCarres() {
 		return plateau.getCarres();
@@ -120,13 +119,11 @@ public abstract class Jeu {
 		this.carte = carte;
 		state = State.CHOOSECARTEACTION;
 	}
-	
-	
+
 	public ArrayList<Joueur> getJoueurs() {
 		return joueurs;
 	}
-	
-	
+
 	public State getState() {
 		return state;
 	}

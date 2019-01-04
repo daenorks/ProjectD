@@ -16,17 +16,18 @@ import java.awt.*;
 import javax.swing.ImageIcon ;
 
 public class PPiece implements Carte, Carre {
-	
+
 	private int id_piece;
 	private Icon icon;
 
-	public PPiece (int id_piece, File f) {
+	public PPiece(int id_piece, File f) {
 		this.id_piece = id_piece;
 		this.icon = toIcon(f.toString());
 	}
-	
-	public PPiece (int id_piece, Image img) {
+
+	public PPiece(int id_piece, Image img) {
 		this.id_piece = id_piece;
+<<<<<<< HEAD
 		this.icon = (Icon) new ImageIcon(img); // cast à voir
 	}
 	
@@ -35,6 +36,18 @@ public class PPiece implements Carte, Carre {
 	}
 	
 	public Icon getIcon() {
+=======
+		this.icon = (Icone) new ImageIcone(img); // cast ï¿½ voir
+	}
+
+	@Override
+	public int getH() {
+		return this.id_piece;
+	}
+
+	@Override
+	public Icone getIcone() {
+>>>>>>> a5fdc8da8e62b5c5330ad723120bf488216d24e5
 		return this.icon;
 	}
 
@@ -59,7 +72,7 @@ public class PPiece implements Carte, Carre {
 	public Icon toIcon(String str) {
 		Image image = null;
 		try {
-			 image = ImageIO.read(getClass().getResource(str));
+			image = ImageIO.read(getClass().getResource(str));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import basic.Jeu;
 import basic.Joueur;
-import domino2d.DJoueur;
 import domino2d.DPioche;
 import domino2d.Domino;
 
@@ -14,7 +13,7 @@ public class DLJeu extends Jeu {
 	public DLJeu(int nbJoueurs, int nbCartes) {
 		joueurs = new ArrayList<Joueur>();
 		pioche = new DPioche();
-		plateau = new DLPlateau(120, (Domino) pioche.pioche());
+		plateau = new DLPlateau(60, (Domino) pioche.pioche());
 		classement = new ArrayList<Joueur>();
 		for (int i = 0; i < nbJoueurs; i++)
 			joueurs.add(new Joueur(pioche, nbCartes));

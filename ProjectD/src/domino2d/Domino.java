@@ -3,6 +3,8 @@ package domino2d;
 import java.awt.Container;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+
 import basic.Carte;
 import basic.Joueur;
 
@@ -27,11 +29,11 @@ public class Domino implements Carte {
 	public boolean estPosable() {
 		return true;
 	}
-	
-	public void afficher () {
+
+	public void afficher() {
 		System.out.println("[" + carre1.getN() + "|" + carre2.getN() + "]");
 	}
-	
+
 	public void reverse() {
 		DCarre d = carre1;
 		carre1 = carre2;
@@ -45,8 +47,8 @@ public class Domino implements Carte {
 
 	@Override
 	public Container getCont(ActionListener e) {
-		// TODO Auto-generated method stub
-		return null;
+		//TODO
+		return new JButton("dom");
 	}
 
 	@Override

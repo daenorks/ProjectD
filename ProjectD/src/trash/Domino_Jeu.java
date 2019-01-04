@@ -44,7 +44,7 @@ public class Domino_Jeu {
 				}
 			} else
 				poser();
-		} 
+		}
 		jouer_vueclassique();
 	}
 
@@ -57,11 +57,11 @@ public class Domino_Jeu {
 			afficher_mesdominos();
 			int d = choixAction();
 			// choisir placement ou de piocher
-			if (d == -1 ) { 
+			if (d == -1) {
 				poser = true;
 				joueurPioche();
-			}
-			else poser = placement((Domino) actuel.getHand().get(d));
+			} else
+				poser = placement((Domino) actuel.getHand().get(d));
 		}
 		if (actuel.nombreDeCartes() == 0)
 			return true;
@@ -70,8 +70,7 @@ public class Domino_Jeu {
 
 	@SuppressWarnings("resource")
 	private int choixAction() {
-		System.out.println("Choisisez un domino parmis ceux disponible, num�rot�s de 0 � n"
-				+ "ou -1 pour piocher : ");
+		System.out.println("Choisisez un domino parmis ceux disponible, num�rot�s de 0 � n" + "ou -1 pour piocher : ");
 		int x = getInt();
 		if (x < -1 || x >= actuel.getHand().size()) {
 			System.out.println("Veuillez choisir un num�ro VALIDE !");
@@ -79,7 +78,7 @@ public class Domino_Jeu {
 		} else
 			return x;
 	}
-	
+
 	public int getInt() {
 		boolean hasX = false;
 		int x = 0;
@@ -87,12 +86,13 @@ public class Domino_Jeu {
 			try {
 				x = scan.nextInt();
 				hasX = true;
-			} catch (Exception e) {}
+			} catch (Exception e) {
+			}
 		return x;
 	}
 
 	public boolean placement(Domino d) {
-		
+
 		boolean poser = false;
 		while (!poser) {
 			System.out.println("Faites 0 pour poser a gauche, 1 pour poser a droite et 2 pour tourner le domino");
@@ -115,12 +115,12 @@ public class Domino_Jeu {
 			default:
 				System.out.println("Veuillez entrer un numero VALIDE !");
 			}
-			if (!poser && x != 2 )
+			if (!poser && x != 2)
 				System.out.println("Impossible de le poser !");
 		}
 		return true;
 	}
-	
+
 	public void joueurPioche() {
 		actuel.add(pioche.pioche());
 	}

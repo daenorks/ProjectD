@@ -98,17 +98,21 @@ public class Domino2D_jeu {
 				+ "1 haut, 2 droite, 3 bas, 4 gauche \n Pour passer votre tour, -5");
 		int x1 = getInt();
 		if (x1 == 1)
-			if  (plateau.poser2D(d, x, y, x, y + 1)) return true;
+			if (plateau.poser2D(d, x, y, x, y + 1))
+				return true;
 		if (x1 == 2)
-			if  (plateau.poser2D(d, x, y, x + 1, y)) return true;
+			if (plateau.poser2D(d, x, y, x + 1, y))
+				return true;
 		if (x1 == 3)
-			if (plateau.poser2D(d, x, y, x, y - 1)) return true;
+			if (plateau.poser2D(d, x, y, x, y - 1))
+				return true;
 		if (x1 == 4)
-			if (plateau.poser2D(d, x, y, x - 1, y)) return true;
+			if (plateau.poser2D(d, x, y, x - 1, y))
+				return true;
 		if (x1 == -5)
 			return false;
 		System.out.println("Choisisez une position V-A-L-I-D-E !");
-		
+
 		return placement(d);
 	}
 
