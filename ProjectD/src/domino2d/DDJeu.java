@@ -10,7 +10,7 @@ import basic.GView;
 import basic.Jeu;
 import basic.Joueur;
 import basic.Jeu.State;
-import trash.Domino2D_jeu;
+// import trash.Domino2D_jeu;
 
 public class DDJeu extends Jeu {
 	private ArrayList<Joueur> classement;

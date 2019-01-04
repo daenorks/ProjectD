@@ -27,7 +27,6 @@ public class PPiece implements Carte, Carre {
 
 	public PPiece(int id_piece, Image img) {
 		this.id_piece = id_piece;
-<<<<<<< HEAD
 		this.icon = (Icon) new ImageIcon(img); // cast à voir
 	}
 	
@@ -36,19 +35,7 @@ public class PPiece implements Carte, Carre {
 	}
 	
 	public Icon getIcon() {
-=======
-		this.icon = (Icone) new ImageIcone(img); // cast ï¿½ voir
-	}
-
-	@Override
-	public int getH() {
-		return this.id_piece;
-	}
-
-	@Override
-	public Icone getIcone() {
->>>>>>> a5fdc8da8e62b5c5330ad723120bf488216d24e5
-		return this.icon;
+		return this.icon;// cast ï¿½ voir
 	}
 
 	public int getD() {

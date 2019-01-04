@@ -30,7 +30,6 @@ import java.awt.Component ;
 
 
 public class PJeu extends Jeu {
-<<<<<<< HEAD
 	
 	
 	public void Pajouter(Image img) {
@@ -39,9 +38,6 @@ public class PJeu extends Jeu {
 			actuel.add(new PPiece (i,imag[i]));
 		}
 	}
-=======
-
->>>>>>> a5fdc8da8e62b5c5330ad723120bf488216d24e5
 	@Override
 	public boolean estFini() {
 		return ((PPlateau)plateau).check_victoire();

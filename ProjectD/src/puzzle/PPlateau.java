@@ -47,11 +47,7 @@ public class PPlateau extends Plateau {
 		if (carres[x][y] == null)
 			return false;
 		else {
-<<<<<<< HEAD
 			PPiece c = (PPiece) carres[x][y];
-=======
-			Carte c = carres[x][y];
->>>>>>> a5fdc8da8e62b5c5330ad723120bf488216d24e5
 			carres[x][y] = null;
 			j.add(c);
 			return true;
@@ -61,15 +57,12 @@ public class PPlateau extends Plateau {
 
 	private boolean check(int x, int y) {
 		return (carres[x][y].getH() == plateau_final[x][y].getH());
-<<<<<<< HEAD
 	}
 	
 	
 	public boolean poser(Carte c, int i, int x) {
 		//inutile;
 		return false;
-=======
->>>>>>> a5fdc8da8e62b5c5330ad723120bf488216d24e5
 	}
 
 	public boolean check_victoire() {
@@ -88,19 +81,12 @@ public class PPlateau extends Plateau {
 		int x = plateau_final.length;
 		int y = plateau_final[0].length;
 		Image[] imag = new Image[x * y];
-<<<<<<< HEAD
 		int c=0;
 		for (int i = 0; i < x; i++) {
 			for (int j = 0; j < y; j++) {
 				Component comp;
 				comp = null; //ca va bug je pense, a tester
 				imag[c] = comp.createImage(
-=======
-		int c;
-		for (int i = 0; i < x; i++) {
-			for (int j = 0; j < y; j++) {
-				imag[c] = createImage(
->>>>>>> a5fdc8da8e62b5c5330ad723120bf488216d24e5
 						new FilteredImageSource(img.getSource(), new CropImageFilter(j * img.getWidth(null) / y,
 								i * img.getHeight(null) / x, (img.getWidth(null) / y), img.getHeight(null) / x)));
 				c++;
@@ -114,10 +100,6 @@ public class PPlateau extends Plateau {
 		for (int i = 0; i < plateau_final.length; i++) {
 			for (int j = 0; j < plateau_final[0].length; j++) {
 				plateau_final[i][j] = new PPiece(c, img[c]);
-<<<<<<< HEAD
-=======
-				actuelc.add((Carte) new PPiece(c, img[c]));
->>>>>>> a5fdc8da8e62b5c5330ad723120bf488216d24e5
 				c++;
 			}
 		}
