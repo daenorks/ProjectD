@@ -4,8 +4,6 @@ import java.awt.Container;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.JButton;
-
 public interface Carte {
 	boolean estPosable();
 

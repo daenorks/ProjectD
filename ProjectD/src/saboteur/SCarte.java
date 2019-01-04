@@ -26,6 +26,7 @@ public enum SCarte implements Carte, Carre {
 	CTRESOR1(1, 0, 1, 0, true, true, "../ressources/SaboteurCache.png"),
 	CTRESOR2(0, 1, 1, 0, true, true, "../ressources/SaboteurCache.png"),
 	CTRESOR3(1, 1, 1, 1, true, true, "../ressources/SaboteurCache.png"), SLampe("../ressources/SaboteurLampe0.png") {
+		@Override
 		public boolean action(Joueur j) {
 			if (j.getBloquer(0))
 				return false;
@@ -36,6 +37,7 @@ public enum SCarte implements Carte, Carre {
 		}
 	},
 	SOutil("../ressources/SaboteurLampe0.png") {
+		@Override
 		public boolean action(Joueur j) {
 			if (j.getBloquer(1))
 				return false;
@@ -46,6 +48,7 @@ public enum SCarte implements Carte, Carre {
 		}
 	},
 	SChariot("../ressources/SaboteurChariot0.png") {
+		@Override
 		public boolean action(Joueur j) {
 			if (j.getBloquer(2))
 				return false;
@@ -56,6 +59,7 @@ public enum SCarte implements Carte, Carre {
 		}
 	},
 	RLampe("../ressources/SaboteurLampe1.png") {
+		@Override
 		public boolean action(Joueur j) {
 			if (!j.getBloquer(0))
 				return false;
@@ -66,6 +70,7 @@ public enum SCarte implements Carte, Carre {
 		}
 	},
 	ROutil("../ressources/SaboteurOutil1.png") {
+		@Override
 		public boolean action(Joueur j) {
 			if (!j.getBloquer(1))
 				return false;
@@ -76,6 +81,7 @@ public enum SCarte implements Carte, Carre {
 		}
 	},
 	RChariot("../ressources/SaboteurChariot1.png") {
+		@Override
 		public boolean action(Joueur j) {
 			if (!j.getBloquer(2))
 				return false;
@@ -119,6 +125,7 @@ public enum SCarte implements Carte, Carre {
 		this.icon = toIcon(file);
 	}
 
+	@Override
 	public Icon toIcon(String str) {
 		Image image = null;
 		try {

@@ -31,6 +31,7 @@ public class SPlateau extends Plateau {
 		return true;
 	}
 
+	@Override
 	public boolean poser(Carte carte, int x, int y) {
 		if ((hasVoisin(x, y)) && (check(((SCarte) carte), x, y))) {
 			this.carres[x][y] = (SCarte) carte;
@@ -72,6 +73,8 @@ public class SPlateau extends Plateau {
 				tresor_revele[2] = true;
 				b[2] = true;
 			}
+			break;
+		default:
 			break;
 		}
 

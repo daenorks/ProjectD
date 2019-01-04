@@ -1,8 +1,5 @@
 package basic;
 
-import java.io.File;
-
-import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JButton;
 

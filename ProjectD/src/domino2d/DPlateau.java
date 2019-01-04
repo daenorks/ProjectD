@@ -10,6 +10,7 @@ public class DPlateau extends Plateau {
 		return check(c, x, 0);
 	}
 
+	@Override
 	public boolean poser(Carte carte, int x, int y) {
 		Domino d = (Domino) carte;
 		switch (carte.getSide()) {

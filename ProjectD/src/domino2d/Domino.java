@@ -26,6 +26,7 @@ public class Domino implements Carte {
 		return carre2;
 	}
 
+	@Override
 	public boolean estPosable() {
 		return true;
 	}

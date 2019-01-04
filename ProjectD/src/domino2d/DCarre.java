@@ -1,7 +1,6 @@
 package domino2d;
 
 import java.awt.Image;
-import java.awt.image.ImageObserver;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;

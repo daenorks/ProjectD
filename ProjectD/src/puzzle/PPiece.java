@@ -10,9 +10,6 @@ import java.io.IOException;
 import basic.Carre;
 import basic.Carte;
 import basic.Joueur;
-import java.awt.image.*;
-import javax.swing.* ;
-import java.awt.*;
 import javax.swing.ImageIcon ;
 
 public class PPiece implements Carte, Carre {
@@ -27,35 +24,41 @@ public class PPiece implements Carte, Carre {
 
 	public PPiece(int id_piece, Image img) {
 		this.id_piece = id_piece;
-		this.icon = (Icon) new ImageIcon(img); // cast à voir
+		this.icon = new ImageIcon(img); // cast ï¿½ voir
 	}
 	
+	@Override
 	public int getH() {
 		return this.id_piece;
 	}
 	
+	@Override
 	public Icon getIcon() {
 		return this.icon;// cast ï¿½ voir
 	}
 
+	@Override
 	public int getD() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 
+	@Override
 	public int getG() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 
+	@Override
 	public int getB() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 
+	@Override
 	public Icon toIcon(String str) {
 		Image image = null;
 		try {

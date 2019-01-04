@@ -5,22 +5,7 @@ import basic.Carre;
 import basic.Plateau;
 import basic.Joueur;
 import java.awt.image.*;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.*;
-import java.awt.Container;
-import java.awt.event.ActionListener;
-import java.io.File;
-import javax.swing.Icon;
-import javax.imageio.ImageIO;
-import java.io.IOException;
-import basic.Carre;
-import basic.Carte;
-import basic.Joueur;
-import java.awt.image.*;
-import javax.swing.*;
-import java.awt.*;
-import javax.swing.ImageIcon;
 import java.awt.Component;
 
 public class PPlateau extends Plateau {
@@ -60,6 +45,7 @@ public class PPlateau extends Plateau {
 	}
 	
 	
+	@Override
 	public boolean poser(Carte c, int i, int x) {
 		//inutile;
 		return false;

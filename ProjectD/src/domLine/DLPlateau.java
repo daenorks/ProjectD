@@ -1,9 +1,5 @@
 package domLine;
 
-import basic.Carre;
-import basic.Carte;
-import basic.Plateau;
-import domino2d.DCarre;
 import domino2d.DPlateau;
 import domino2d.Domino;
 

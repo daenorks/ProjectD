@@ -3,14 +3,9 @@ package domino2d;
 import java.util.ArrayList;
 
 import javax.swing.SwingUtilities;
-import java.awt.*;
-
-import basic.Carte;
 import basic.GView;
 import basic.Jeu;
 import basic.Joueur;
-import basic.Jeu.State;
-// import trash.Domino2D_jeu;
 
 public class DDJeu extends Jeu {
 	private ArrayList<Joueur> classement;
@@ -45,6 +40,7 @@ public class DDJeu extends Jeu {
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				DDJeu j = new DDJeu(2, 5);
 				GView view = new GView(j);
