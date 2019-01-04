@@ -57,4 +57,8 @@ public class Joueur {
 	public void setBloquer(int i, boolean b) {
 		bloquer[i]=b;
 	}
+	
+	public void addScore(int x){
+		this.score +=x;
+	}
 }

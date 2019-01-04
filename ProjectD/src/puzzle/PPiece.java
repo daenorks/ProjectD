@@ -1,5 +1,6 @@
 package puzzle;
 
+import java.awt.*;
 import java.awt.Container;
 import java.awt.event.ActionListener;
 
@@ -27,6 +28,11 @@ public class PPiece implements Carte, Carre {
 	@Override
 	public int getH() {
 		return this.id_piece;
+	}
+	
+	@Override
+	public Icone getIcone() {
+		return this.icon;
 	}
 
 	@Override

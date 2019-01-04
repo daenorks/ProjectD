@@ -7,7 +7,7 @@ import basic.Plateau;
 public class SPlateau extends Plateau {
 
 	
-	private int[] tresor;
+	protected int[] tresor;
 	private boolean[] tresor_revele;
 	private boolean[][] aux;
 	
@@ -33,10 +33,10 @@ public class SPlateau extends Plateau {
 		return true;
 	}
 
-	@Override
-	public boolean poser(SCarte carte, int x, int y) {
-		if ((hasVoisin(x, y)) && (check(carte, x, y))) {
-			this.carres[x][y] = carte;
+	
+	public boolean poser(Carte carte, int x, int y) {
+		if ((hasVoisin(x, y)) && (check(((SCarte)carte), x, y))) {
+			this.carres[x][y] = (SCarte)carte;
 			return true;
 		}
 		return false;
@@ -46,7 +46,7 @@ public class SPlateau extends Plateau {
 
 	public boolean[] parcourir() {
 		this.aux = new boolean[21][21];
-		parcourir_aux(new boolean[3], 10, 10);
+		return parcourir_aux(new boolean[3], 10, 10);
 	}
 
 	private boolean[] parcourir_aux(boolean []b,int x, int y) {
@@ -79,7 +79,7 @@ public class SPlateau extends Plateau {
 			break;
 		}
 		
-		if((SCarte)carres[x][y].getTraversable()) {
+		if(((SCarte)carres[x][y]).getTraversable()) {
 			if ((x<carres.length && x > -1) && carres[x+1][y]!=null && (!aux[x+1][y])) {
 				b=parcourir_aux(b,x+1,y);
 			}
@@ -99,4 +99,5 @@ public class SPlateau extends Plateau {
 		
 		return b;
 	}
+	
 }

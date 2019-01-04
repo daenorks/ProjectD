@@ -1,9 +1,9 @@
 package saboteur;
 
 import java.util.ArrayList;
-
 import basic.Jeu;
 import basic.Joueur;
+import basic.Carte;
 
 public class SJeu extends Jeu {
 
@@ -11,7 +11,7 @@ public class SJeu extends Jeu {
 	
 	@Override
 	public boolean estFini() {
-		return plateau.partie_fini();
+		return ((SPlateau)plateau).partie_finie();
 	}
 	
 	@Override
@@ -34,9 +34,9 @@ public class SJeu extends Jeu {
 		actuel.remove(carte);
 	}
 
-	public boolean utiliserCarte(SCarte carte, joueur c) {
+	public boolean utiliserCarte(Carte carte, Joueur c) {
 		// Utilisation d'une carte d'action seulement. c -> joueur ciblé
-		boolean b = (carte.action(actuel, plateau, c, 0, 0));
+		boolean b = (carte.action(c));
 		if (b) {
 			actuel.remove(carte);
 			prochainTour();
@@ -45,11 +45,11 @@ public class SJeu extends Jeu {
 	}
 
 	public void chemin_gagnant() {
-		boolean[] b = parcourir();
+		boolean[] b = ((SPlateau) plateau).parcourir();
 		for (int i = 0; i < 3; i++) {
 			if (b[i]) {
 				if(gagnants.indexOf(actuel)==-1) gagnants.add(actuel);
-				actuel.score += tresor[i];
+				actuel.addScore (((SPlateau) plateau).tresor[i]);
 			}
 		}
 	}

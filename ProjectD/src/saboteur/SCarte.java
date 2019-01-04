@@ -1,9 +1,12 @@
 package saboteur;
 
+import java.io.IOException;
 import java.awt.Container;
 import java.awt.event.ActionListener;
-
+import java.awt.*;
+import javax.swing.*;
 import javax.swing.Icon;
+import javax.imageio.ImageIO;
 
 import basic.Carre;
 import basic.Carte;
@@ -11,7 +14,7 @@ import basic.Joueur;
 
 public enum SCarte implements Carte, Carre {
 
-	DEPART(1,1,1,1),
+	DEPART(1,1,1,1,false,true,"../ressources/SaboteurDepart.png"),
 	C1(1,0,1,1,false,true,"../ressources/SaboteurChemin1.png"),
 	C2(1,1,0,1,false,true,"../ressources/SaboteurChemin2.png"),
 	C3(0,0,0,1,false,true,"../ressources/SaboteurChemin3.png"),
@@ -85,7 +88,7 @@ public enum SCarte implements Carte, Carre {
 	private final int g;
 	private final int d;
 
-	private final int indexBloquer;
+	private int indexBloquer;
 	private final boolean traversable;
 	private final boolean tresor;
 	private final boolean posable;
@@ -94,6 +97,9 @@ public enum SCarte implements Carte, Carre {
 	private SCarte(String file) {
 		this.posable = false;
 		this.icon = toIcon(file);
+		h =0; b=0; g=0; d=0;
+		traversable=false;
+		tresor=false;
 	}
 
 	private SCarte(int h, int g, int b, int d,
@@ -106,7 +112,6 @@ public enum SCarte implements Carte, Carre {
 		this.traversable=traversable;
 		this.posable = false;
 		this.icon = toIcon(file);
-		this.posable = true;
 	}
 
 	public Icon toIcon(String str) {

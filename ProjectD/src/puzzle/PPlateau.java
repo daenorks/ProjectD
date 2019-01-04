@@ -2,6 +2,10 @@ package puzzle;
 
 import basic.Carte;
 import basic.Plateau;
+import basic.Joueur;
+import java.awt.image.*;
+
+import java.awt.*;
 
 public class PPlateau extends Plateau {
 
@@ -15,21 +19,21 @@ public class PPlateau extends Plateau {
 
 	@Override
 	public boolean poser(PPiece carte, Joueur j, int x, int y) {
-		if (plateau[x][y] != null)
+		if (carres[x][y] != null)
 			return false;
 		put(carte, x, y);
-		j.remove(c);
+		j.remove(carte);
 		return true;
 	}
 
 	public boolean retirer(Joueur j ,int x, int y) {
-		if ((x<0 || y<0) || (x>=plateau.length || y>=plateau[0].length)) 
+		if ((x<0 || y<0) || (x>=carres.length || y>=carres[0].length)) 
 			return false;
-		if (plateau[x][y] == null)
+		if (carres[x][y] == null)
 			return false;
 		else {
-			Carte c = plateau[x][y];
-			plateau[x][y]=null;
+			Carte c = carres[x][y];
+			carres[x][y]=null;
 			j.add(c);
 		}
 	}
@@ -39,8 +43,10 @@ public class PPlateau extends Plateau {
 	}
 
 	public boolean check_victoire() {
-		for (int i = 0; i < x.length; i++) {
-			for (int j = 0; j < y.length; j++) {
+		int x = plateau_final.length;
+		int y = plateau_final[0].length;
+		for (int i = 0; i < x; i++) {
+			for (int j = 0; j < y; j++) {
 				if (!check(i,j))
 					return false;
 			}
@@ -50,13 +56,13 @@ public class PPlateau extends Plateau {
 	
 	public Image[] decouper(Image img){
 		int x = plateau_final.length;
-		int y = plateau_final.[0]length;
+		int y = plateau_final[0].length;
 		Image []imag = new Image[x*y];
 		int c;
-		for (int i = 0; i < x.length; i++) {
-            for (int j = 0; j < y.length; j++) {
-                 imag[c] = createImage(new FilteredImageSource(resized.getSource(),
-                		new CropImageFilter(j*width/y.length,i*height/x.length,(width/y.length), height/x.length)));
+		for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                 imag[c] = createImage(new FilteredImageSource(img.getSource(),
+                		new CropImageFilter(j*img.getWidth(null)/y,i*img.getHeight(null)/x,(img.getWidth(null)/y), img.getHeight(null)/x)));
                  c++;
             }
 		}
@@ -68,7 +74,7 @@ public class PPlateau extends Plateau {
 		for (int i=0; i < plateau_final.length; i++) {
 			for (int j=0; j<plateau_final[0].length;j++) {
 				plateau_final[i][j] = new PPiece(c,img[c]);
-				actuel.hand.add((Carte) new PPiece (c,img[c]));
+				actuelc.add((Carte) new PPiece (c,img[c]));
 				c++;
 			}
 		}

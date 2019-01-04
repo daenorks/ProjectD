@@ -3,7 +3,7 @@ package domino2d;
 import java.util.ArrayList;
 
 import javax.swing.SwingUtilities;
-
+import java.awt.*;
 import basic.GView;
 import basic.Jeu;
 import basic.Joueur;

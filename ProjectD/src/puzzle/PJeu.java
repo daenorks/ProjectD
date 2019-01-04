@@ -9,7 +9,7 @@ public class PJeu extends Jeu {
 	
 	@Override
 	public boolean estFini() {
-		return check_victoire();
+		return plateau.check_victoire();
 	}
 
 	@Override
