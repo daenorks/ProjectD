@@ -46,12 +46,22 @@ public class Domino implements Carte {
 	public boolean action(Joueur j) {
 		return false;
 	}
+	
+	public String toString() {
+		switch (side) {
+			case 0 : return (carre1.getN() + " " + carre2.getN());
+			case 1 : return "<html>" + carre1.getN() + "<br />" + carre2.getN() + "</html>";
+			case 2 : return carre2.getN() + " " + carre1.getN();
+			case 3 : return "<html>" + carre2.getN() + "<br />" + carre1.getN() + "</html>";
+			default : return "";
+		}
+	}
 
 	@Override
 	public Container getCont(ActionListener e) {
 		Container c = new Container();
 		c.setLayout(new FlowLayout());
-		JButton b = new JButton(carre1.getN() + " " + carre2.getN());
+		JButton b = new JButton(toString());
 		b.addActionListener(e);
 		c.add(b);
 		return c;
