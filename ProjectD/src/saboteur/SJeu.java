@@ -7,15 +7,16 @@ import basic.Joueur;
 
 public class SJeu extends Jeu {
 
+	ArrayList<Joueur> gagnants = new <Joueur>ArrayList();
+	
 	@Override
 	public boolean estFini() {
 		return plateau.partie_fini();
 	}
-
+	
 	@Override
 	public ArrayList<Joueur> lesGagnants() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.gagnants;
 	}
 
 	@Override
@@ -25,6 +26,7 @@ public class SJeu extends Jeu {
 			// termine la partie
 		} else {
 			prochainJoueur();
+			// continue la partie
 		}
 	}
 
@@ -46,6 +48,7 @@ public class SJeu extends Jeu {
 		boolean[] b = parcourir();
 		for (int i = 0; i < 3; i++) {
 			if (b[i]) {
+				if(gagnants.indexOf(actuel)==-1) gagnants.add(actuel);
 				actuel.score += tresor[i];
 			}
 		}

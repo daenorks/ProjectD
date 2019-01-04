@@ -82,7 +82,7 @@ public enum SCarte implements Carte, Carre {
 
 	@Override
 	public boolean estPosable() {
-		// 
+		// inutile ?
 	}
 
 	@Override

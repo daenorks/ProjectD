@@ -6,8 +6,11 @@ import basic.Plateau;
 
 public class SPlateau extends Plateau {
 
+	
 	private int[] tresor;
 	private boolean[] tresor_revele;
+	private boolean[][] aux;
+	
 
 	public SPlateau(Carre[][] c) {
 		super(new Carre[21][21]);
@@ -22,15 +25,33 @@ public class SPlateau extends Plateau {
 		put(SCarte.CTRESOR3, 20, 10);
 		put(SCarte.CTRESOR3, 10, 10);
 	}
+	
+	public boolean partie_finie() {
+		for (int i = 0; i < 3; i++) {
+			if (!tresor_revele[i])
+				return false;
+		}
+		return true;
+	}
 
-	private boolean[][] aux;
+	@Override
+	public boolean poser(SCarte carte, int x, int y) {
+		if ((hasVoisin(x, y)) && (check(carte, x, y))) {
+			this.carres[x][y] = carte;
+			return true;
+		}
+		return false;
+	}
+
+	
 
 	public boolean[] parcourir() {
 		this.aux = new boolean[21][21];
-		parcourir_aux(aux, new boolean[3], 10, 10);
+		parcourir_aux(new boolean[3], 10, 10);
 	}
 
 	private boolean[] parcourir_aux(boolean []b,int x, int y) {
+		
 		if (partie_finie()) return b;
 		SCarte sc = (SCarte) carres[x][y];
 		aux[x][y]=true;
@@ -76,24 +97,7 @@ public class SPlateau extends Plateau {
 				b=parcourir_aux(b,x,y+1);
 			}
 		}
+		
 		return b;
 	}
-
-	public boolean partie_finie() {
-		for (int i = 0; i < 3; i++) {
-			if (!tresor_revele[i])
-				return false;
-		}
-		return true;
-	}
-
-	@Override
-	public boolean poser(SCarte carte, int x, int y) {
-		if ((hasVoisin(x, y)) && (check(carte, x, y))) {
-			this.carres[x][y] = carte;
-			return true;
-		}
-		return false;
-	}
-
 }
