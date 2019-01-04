@@ -19,6 +19,11 @@ public class PPiece implements Carte, Carre {
 		this.icon = toIcon(f);
 	}
 	
+	public PPiece (int id_piece, Image img) {
+		this.id_piece = id_piece;
+		this.icon = new ImageIcone(img);
+	}
+	
 	@Override
 	public int getH() {
 		return this.id_piece;
