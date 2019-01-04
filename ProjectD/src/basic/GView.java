@@ -1,26 +1,35 @@
 package basic;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
 import basic.Jeu.State;
 
+@SuppressWarnings("serial")
 public class GView extends JFrame {
 	Jeu jeu;
+	Container all;
 	Container action;
 	Container plateau;
 	
 	public void update() {
-		
+		all.removeAll();
+		all.add(buildJoueur(jeu.actuel), BorderLayout.LINE_START);
+		all.add(buildPlateau(), BorderLayout.CENTER);
+		all.add(buildAction(), BorderLayout.PAGE_END);
+		all.revalidate();
+		repaint();
 	}
 	
 	public GView(Jeu jeu) {
 		this.jeu = jeu;
-		Container cont = getContentPane();
-		cont.add(buildPlateau(), BorderLayout.PAGE_END);
-		cont.add(buildAction(), BorderLayout.PAGE_END);
+		all = getContentPane();
+		all.add(buildJoueur(jeu.actuel), BorderLayout.LINE_START);
+		all.add(buildPlateau(), BorderLayout.CENTER);
+		all.add(buildAction(), BorderLayout.PAGE_END);
 	}
 	
 	private Container buildAction() {
@@ -42,18 +51,26 @@ public class GView extends JFrame {
 			action.add(buildPioche());
 		if (jeu.canPasse())
 			action.add(buildPasser());
-		for (int x = 0; x < main.size() ; x++)
-				action.add(carteMain(main.get(x), x));
+		for (Carte carte : main)
+				action.add(buildHandCarte(carte));
 		return action;
+	}
+	
+	private Container buildHandCarte(Carte carte) {
+		return carte.getCont(e -> {
+			jeu.setCarte(carte);
+		});
 	}
 	
 	private Container buildActionPasPosable() {
 		action = new Container();
-		if (jeu.canDef())
+		if (jeu.canDef())if (jeu.defausse()) {
+			update();
+		};
 			action.add(buildDef());
 		for (Joueur j : jeu.getJoueurs())
-			;
-		return null;
+			action.add(buildJoueur(j));
+		return action;
 	}
 	
 	private Container buildActionPosable() {
@@ -66,17 +83,20 @@ public class GView extends JFrame {
 	}
 	
 	private Component buildCarte() {
-		// TODO Auto-generated method stub
-		return null;
+		return jeu.getCarte().getCont(e -> {});
 	}
 
 	private Component buildRotate() {
-		// TODO Auto-generated method stub
-		return null;
+		JButton button = new JButton("Tourne");
+		button.addActionListener(e -> {
+			jeu.getCarte().rotate();
+			update();
+		});
+		return button;
 	}
 
 	private JButton buildDef() {
-		JButton button = new JButton("Passe");
+		JButton button = new JButton("Defausse");
 		button.addActionListener(e -> {
 			if (jeu.defausse()) {
 				update();
@@ -84,6 +104,7 @@ public class GView extends JFrame {
 		});
 		return button;
 	}
+
 
 	private JButton buildPasser() {
 		JButton button = new JButton("Passe");
@@ -101,8 +122,16 @@ public class GView extends JFrame {
 			if (jeu.pioche()) {
 				update();
 			};
-		});
+		});  
 		return button;
+	}
+	
+	private JButton buildJoueur(Joueur j) {
+		JButton joueur = new JButton("Joueur " + j.getNumJ() + "\n"
+				+ (j.getBloquer()[0]?"Chariot casse":"") + "\n"
+				+ (j.getBloquer()[1]?"Outil casse":"") + "\n"
+				+ (j.getBloquer()[2]?"Lampe casse":"") + "\n");
+		return joueur;
 	}
 
 	private JButton carrePlateau(Carre carre, int x, int y) {
@@ -124,10 +153,6 @@ public class GView extends JFrame {
 		button.setBorder(BorderFactory.createEmptyBorder());
 		button.setContentAreaFilled(false);
 		return button;
-	}
-
-	private Container carteMain(Carte carte, int x) {
-		return carte.getCont(e -> {});
 	}
 
 	private Container buildPlateau() {

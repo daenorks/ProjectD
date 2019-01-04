@@ -85,7 +85,7 @@ public abstract class Jeu {
 	public boolean bloquer() {
 		return bloquer == joueurs.size();
 	}
-
+	
 	protected void setInitalState() {
 		state = State.CHOOSEACTION;
 		carte = null;
@@ -119,6 +119,7 @@ public abstract class Jeu {
 
 	public void setCarte(Carte carte) {
 		this.carte = carte;
+		state = State.CHOOSECARTEACTION;
 	}
 	
 	
