@@ -12,19 +12,24 @@ import basic.Joueur;
 public enum SCarte implements Carte, Carre {
 
 	DEPART(1,1,1,1);
-	C1(1,0,1,1,false,true,"fichier");
-	C2(1,1,0,1,false,true,"fichier");
-	C3(0,0,0,1,false,true,"fichier");
-	C4(1,1,1,1,false,true,"fichier");
-	C5(0,0,1,1,false,true,"fichier");		
-	C6(0,1,0,1,false,true,"fichier");
-	C7(1,0,1,1,false,false,"fichier"); // SaboteurChemin 7 n est pas traversable.
-	C8(1,1,0,0,false,true,"fichier");
-	CTRESOR1(1,0,1,0,true,"fichier");
-	CTRESOR2(0,1,1,0,true,"fichier");
-	CTRESOR3(1,1,1,1,true,"fichier");
+	C1(1,0,1,1,false,true,"../ressources/SaboteurChemin1.png");
+	C2(1,1,0,1,false,true,"../ressources/SaboteurChemin2.png");
+	C3(0,0,0,1,false,true,"../ressources/SaboteurChemin3.png");
+	C4(1,1,1,1,false,true,"../ressources/SaboteurChemin4.png");
+	C5(0,0,1,1,false,true,"../ressources/SaboteurChemin5.png");		
+	C6(0,1,0,1,false,true,"../ressources/SaboteurChemin6.png");
+	C7(1,0,1,1,false,false,"../ressources/SaboteurChemin7.png"); // SaboteurChemin 7 n est pas traversable.
+	C8(1,1,0,0,false,true,"../ressources/SaboteurChemin8.png");
+	CTRESOR1(1,0,1,0,true,"../ressources/SaboteurCache.png");
+	CTRESOR2(0,1,1,0,true,"../ressources/SaboteurCache.png");
+	CTRESOR3(1,1,1,1,true,"../ressources/SaboteurCache.png");
 	
-	saboter_Lampe();saboter_Outil();saboter_Chariot();reparer_Lampe();reparer_Outil();reparer_Chariot();
+	saboter_Lampe("../ressources/SaboteurLampe0.png");
+	saboter_Outil("../ressources/SaboteurLampe0.png");
+	saboter_Chariot("../ressources/SaboteurChariot0.png");
+	reparer_Lampe("../ressources/SaboteurLampe1.png");
+	reparer_Outil("../ressources/SaboteurOutil1.png");
+	reparer_Chariot("../ressources/SaboteurChariot1.png");
 
 	
 	private final int h;
@@ -37,7 +42,11 @@ public enum SCarte implements Carte, Carre {
 	private final boolean tresor;
 	private File file;
 
-	public void SCarte(int x, int y, int z, int c, boolean b,boolean t, file f) {
+	public SCarte(File f) {
+		this.file = f;
+	}
+	
+	public SCarte(int x, int y, int z, int c, boolean b,boolean t, File f) {
 		this.h=x;
 		this.b=y;
 		this.g=z;
@@ -142,13 +151,13 @@ public enum SCarte implements Carte, Carre {
 	public void revele() {
 		switch (this) {
 		case CTRESOR1:
-			this.file = "fichier";
+			this.file = "../ressources/SaboteurTresor0.png";
 			break;
 		case CTRESOR2:
-			this.file = "fichier";
+			this.file = "../ressources/SaboteurTresor0bis.png";
 			break;
 		case CTRESOR3:
-			this.file = "fichier";
+			this.file = "../ressources/SaboteurTresor1.png";
 			break;
 		}
 	}

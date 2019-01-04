@@ -19,7 +19,6 @@ public class SPlateau extends Plateau {
 		for (int i = 0; i < 3; i++) {
 			tresor[i] = (int) ((Math.random() * ((100 - 1) + 1)) + 1);
 		}
-
 		put(SCarte.CTRESOR1, 10, 0);
 		put(SCarte.CTRESOR2, 10, 10);
 		put(SCarte.CTRESOR3, 10, 5);
@@ -78,6 +77,8 @@ public class SPlateau extends Plateau {
 				b[2]=true;
 			}
 			break;
+		case default:
+				break;
 		}
 		
 		if((SCarte)carres[x][y].getTraversable()) {
