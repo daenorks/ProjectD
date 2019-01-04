@@ -10,11 +10,12 @@ import basic.Carte;
 import basic.Joueur;
 
 public class PPiece implements Carte, Carre {
-
+	
+	private int id_piece;
+	
 	@Override
 	public int getH() {
-		// TODO Auto-generated method stub
-		return 0;
+		this.id_piece;
 	}
 
 	@Override
