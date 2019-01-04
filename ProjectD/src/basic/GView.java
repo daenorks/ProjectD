@@ -16,9 +16,13 @@ public class GView extends JFrame {
 
 	public void update() {
 		all.removeAll();
+		if (jeu.estFini())
+			all.add(buildWinners(), BorderLayout.CENTER);
+		else {
 		all.add(buildJoueur(jeu.actuel), BorderLayout.LINE_START);
 		all.add(buildPlateau(), BorderLayout.CENTER);
 		all.add(buildAction(), BorderLayout.PAGE_END);
+		}
 		all.revalidate();
 		repaint();
 	}
@@ -152,6 +156,16 @@ public class GView extends JFrame {
 				+ (j.getBloquer()[1] ? "Outil casse" : "") + "\n" + (j.getBloquer()[2] ? "Lampe casse" : "") + "\n");
 		return joueur;
 	}
+	
+	private Container buildWinners() {
+		Container cont = new Container();
+		cont.setLayout(new FlowLayout());
+		for (Joueur j : jeu.lesGagnants())
+			cont.add(buildJoueur(j));
+		return cont;
+	}
+	
+	
 
 	private JButton carrePlateau(Carre carre, int x, int y) {
 		JButton button = null;

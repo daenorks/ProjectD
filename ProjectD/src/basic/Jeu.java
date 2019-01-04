@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public abstract class Jeu {
 	protected ArrayList<Joueur> joueurs;
+	protected ArrayList<Joueur> classement;
 	protected Pioche pioche;
 	protected Plateau plateau;
 	protected Joueur actuel;
@@ -18,7 +19,9 @@ public abstract class Jeu {
 
 	public abstract boolean estFini();
 
-	public abstract ArrayList<Joueur> lesGagnants();
+	public ArrayList<Joueur> lesGagnants() {
+		return classement;
+	}
 
 	public boolean poserCarte(int x, int y) {
 		if (carte == null)
@@ -91,9 +94,13 @@ public abstract class Jeu {
 	}
 
 	protected void prochainTour() {
+		prochainTourSup();
 		prochainJoueur();
 		setInitalState();
 	}
+
+
+	protected abstract void prochainTourSup();
 
 	protected void prochainJoueur() {
 		actuel = joueurs.get(((joueurs.indexOf(actuel)) + 1) % joueurs.size());
@@ -103,7 +110,7 @@ public abstract class Jeu {
 		prochainTour();
 	}
 
-	ArrayList<Carte> getActualHand() {
+	protected ArrayList<Carte> getActualHand() {
 		return actuel.getHand();
 	}
 

@@ -54,4 +54,9 @@ public class DDJeu extends Jeu {
 		});
 	}
 
+	@Override
+	protected void prochainTourSup() {
+		if (getActualHand().size() == 0) ;
+	}
+
 }
