@@ -10,31 +10,17 @@ public abstract class Jeu {
 	protected int bloquer;
 	protected Carte carte;
 	protected State state;
-
-
-
-	public enum State {
-		CHOOSEACTION(),
-		CHOOSEPLAYER(),
-		CHOOSEXY(),
-		CHOOSESIDE();
-	}
-
-	void piocher() {
-		Carte c = pioche.pioche();
-		if (c != null)
-			actuel.add(c);
-		else
-			bloquer++;
-		prochainTour();
-	}
-
-	public boolean bloquer() {
-		return bloquer == joueurs.size();
-	}
-
-	public boolean utiliserCarte(Carte carte, int x, int y) {
-		if (!actuel.peutPoser()) return false;
+	protected boolean passe, defausse, canPioche;
+	
+	public abstract boolean estFini();
+	public abstract ArrayList<Joueur> lesGagnants();
+	public abstract void nextState();
+	
+	public boolean poserCarte(int x, int y) {
+		if (carte == null)
+			return false;
+		if (!actuel.peutPoser())
+			return false;
 		boolean reussi = carte.poser(plateau, x, y);
 		if (reussi) {
 			actuel.remove(carte);
@@ -44,10 +30,71 @@ public abstract class Jeu {
 		return reussi;
 	}
 	
-	public abstract boolean estFini();
-	public abstract ArrayList<Joueur> lesGagnants();
+	public boolean useCarte(Joueur j) {
+		if (carte == null)
+			return false;
+		if (actuel.peutPoser())
+			return false;
+		boolean reussi = carte.action(j);
+		if (reussi) {
+			actuel.remove(carte);
+			bloquer = 0;
+			prochainTour();
+		}
+		return reussi;
+	}
+	
+	public boolean pioche() {
+		if (!pioche.isEmpty())
+			actuel.add(pioche.pioche());
+		else
+			bloquer++;
+		prochainTour();
+		return true;
+	}
+	
+	public boolean defausse() {
+		actuel.remove(carte);
+		prochainTour();
+		return true;
+	}
+	
+	public boolean passer() {
+		bloquer++;
+		prochainTour();
+		return true;
+	}
 
-	protected abstract void prochainTour();
+	public boolean canPasse() {
+		return passe;
+	}
+	
+	public boolean canDef() {
+		return defausse;
+	}
+	
+	public boolean canPioche() {
+		return canPioche;
+	}
+
+	public enum State {
+		CHOOSEACTION(),
+		CHOOSECARTEACTION(),
+	}
+
+	public boolean bloquer() {
+		return bloquer == joueurs.size();
+	}
+
+	protected void setInitalState() {
+		state = State.CHOOSEACTION;
+		carte = null;
+	}
+
+	protected void prochainTour() {
+		prochainJoueur();
+		setInitalState();
+	}
 	
 	protected void prochainJoueur() {
 		actuel = joueurs.get(((joueurs.indexOf(actuel)) + 1) % joueurs.size());
@@ -83,9 +130,4 @@ public abstract class Jeu {
 	public State getState() {
 		return state;
 	}
-
-	public void setState(State state) {
-		this.state = state;
-	}
-	
 }

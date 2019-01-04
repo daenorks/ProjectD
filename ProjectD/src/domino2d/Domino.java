@@ -9,6 +9,7 @@ import basic.Joueur;
 public class Domino implements Carte {
 	private DCarre carre1;
 	private DCarre carre2;
+	private int side;
 
 	public Domino(DCarre c1, DCarre c2) {
 		carre1 = c1;
@@ -52,7 +53,7 @@ public class Domino implements Carte {
 	@Override
 	public int getSide() {
 		// TODO Auto-generated method stub
-		return 0;
+		return side;
 	}
 
 	@Override

@@ -5,69 +5,118 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import basic.Jeu.State;
+
 public class GView extends JFrame {
 	Jeu jeu;
+	Container action;
+	Container plateau;
 	
-	public GView(Jeu jeu, GController gc) {
+	public void update() {
+		
+	}
+	
+	public GView(Jeu jeu) {
 		this.jeu = jeu;
 		Container cont = getContentPane();
-		cont.add(buildPlateau(gc), BorderLayout.PAGE_END);
-		cont.add(buildMain(gc), BorderLayout.PAGE_END);
+		cont.add(buildPlateau(), BorderLayout.PAGE_END);
+		cont.add(buildAction(), BorderLayout.PAGE_END);
+	}
+	
+	private Container buildAction() {
+		if (jeu.getState() == State.CHOOSEACTION)
+			return buildActionChoix();
+		if (jeu.getState() == State.CHOOSECARTEACTION) {
+			if (jeu.getCarte().estPosable())
+				return buildActionPosable();
+			else
+				return buildActionPasPosable();
+		}
+		return null;
 	}
 
-	private Container buildMain(GController gc) {
-		Container action = new Container();
+	private Container buildActionChoix() {
+		action = new Container();
 		ArrayList<Carte> main = jeu.getActualHand();
-		action.add(buildPioche(gc));
-		action.add(buildPasser(gc));
+		if (jeu.canPioche)
+			action.add(buildPioche());
+		if (jeu.canPasse())
+			action.add(buildPasser());
 		for (int x = 0; x < main.size() ; x++)
-				action.add(carteMain(main.get(x), x, gc));
+				action.add(carteMain(main.get(x), x));
 		return action;
 	}
 	
-	private Component buildPasser(GController gc) {
-		JButton button = new JButton("Passe");
-		button.addActionListener(e -> {gc.passe();});
-		return button;
-	}
-
-	private Component buildPioche(GController gc) {
-		JButton button = new JButton("Pioche");
-		button.addActionListener(e -> {gc.pioche();});
-		return button;
-	}
-
-	private JButton carrePlateau(Carre carre, int x, int y, GController gc) {
-		JButton button = null;
-		if (carre == null)
-			button = fillerButton();
-		else
-			button = carre.getButton();
-		button.addActionListener(e -> {gc.clickPlateauXY(x, y);});
-		return button;
-	}
-	
-	private Container joueurs() {
-		Container joueurs = new Container();
+	private Container buildActionPasPosable() {
+		action = new Container();
+		if (jeu.canDef())
+			action.add(buildDef());
 		for (Joueur j : jeu.getJoueurs())
 			;
 		return null;
 	}
 	
-	private Container choose() {
-		switch (jeu.getState()) {
-		case CHOOSEACTION :
-			break;
-		case CHOOSEPLAYER:
-			break;
-		case CHOOSESIDE:
-			break;
-		case CHOOSEXY:
-			break;
-		default:
-			break;
-		
-		}
+	private Container buildActionPosable() {
+		action = new Container();
+		if (jeu.canDef())
+			action.add(buildDef());
+		action.add(buildRotate());
+		action.add(buildCarte());
+		return action;
+	}
+	
+	private Component buildCarte() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Component buildRotate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private JButton buildDef() {
+		JButton button = new JButton("Passe");
+		button.addActionListener(e -> {
+			if (jeu.defausse()) {
+				update();
+			};
+		});
+		return button;
+	}
+
+	private JButton buildPasser() {
+		JButton button = new JButton("Passe");
+		button.addActionListener(e -> {
+			if (jeu.passer()) {
+				update();
+			};
+		});
+		return button;
+	}
+
+	private JButton buildPioche() {
+		JButton button = new JButton("Pioche");
+		button.addActionListener(e -> {
+			if (jeu.pioche()) {
+				update();
+			};
+		});
+		return button;
+	}
+
+	private JButton carrePlateau(Carre carre, int x, int y) {
+		JButton button = null;
+		if (carre == null)
+			button = fillerButton();
+		else
+			button = carre.getButton();
+		button.addActionListener(e -> {
+			if (jeu.poserCarte(x, y)) {
+				update();
+			};
+		});
+		return button;
 	}
 	
 	private JButton fillerButton() {
@@ -77,17 +126,17 @@ public class GView extends JFrame {
 		return button;
 	}
 
-	private Container carteMain(Carte carte, int x, GController gc) {
-		return carte.getCont(e -> {gc.clickCarteX(x);});
+	private Container carteMain(Carte carte, int x) {
+		return carte.getCont(e -> {});
 	}
 
-	private Container buildPlateau(GController gc) {
+	private Container buildPlateau() {
 		Container plateau = new Container();
 		Carre[][] carres = jeu.getPCarres();
 		plateau.setLayout(new GridLayout(carres[0].length, carres.length));
 		for (int y = 0; y < carres[0].length; y++)
 			for (int x = 0; x < carres.length; x++)
-				plateau.add(carrePlateau(carres[x][y], x, y, gc));
+				plateau.add(carrePlateau(carres[x][y], x, y));
 		return plateau;
 	}
 }

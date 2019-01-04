@@ -20,4 +20,7 @@ public interface Carte {
 	Container getCont(ActionListener e);
 	int getSide();
 	void setSide(int s);
+	default void rotate() {
+		setSide((getSide() + 1) % 4);
+	}
 }
