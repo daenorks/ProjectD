@@ -12,6 +12,12 @@ import basic.Joueur;
 public class PPiece implements Carte, Carre {
 	
 	private int id_piece;
+	private Icon icon;
+
+	public PPiece (int id_piece, File f) {
+		this.id_piece = id_piece;
+		this.icon = toIcon(f);
+	}
 	
 	@Override
 	public int getH() {
@@ -38,8 +44,7 @@ public class PPiece implements Carte, Carre {
 
 	@Override
 	public Icon getIcon() {
-		// TODO Auto-generated method stub
-		return null;
+		return icon;
 	}
 
 	@Override
