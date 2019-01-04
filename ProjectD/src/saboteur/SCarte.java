@@ -35,7 +35,6 @@ public enum SCarte implements Carte, Carre {
 	private final int a;
 	private final boolean traversable;
 	private final boolean tresor;
-	
 	private File file;
 
 	public void SCarte(int x, int y, int z, int c, boolean b,boolean t, file f) {
