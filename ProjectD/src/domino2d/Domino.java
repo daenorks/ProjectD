@@ -1,6 +1,10 @@
-package domino;
+package domino2d;
+
+import java.awt.Container;
+import java.awt.event.ActionListener;
 
 import basic.Carte;
+import basic.Joueur;
 
 public class Domino implements Carte {
 	private DCarre carre1;
@@ -34,9 +38,27 @@ public class Domino implements Carte {
 	}
 
 	@Override
-	public boolean action() {
+	public boolean action(Joueur j) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Container getCont(ActionListener e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getSide() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setSide(int s) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

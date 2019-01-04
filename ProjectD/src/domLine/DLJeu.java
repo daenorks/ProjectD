@@ -1,20 +1,23 @@
-package domino2;
+package domLine;
 
 import java.util.ArrayList;
 
 import basic.Jeu;
 import basic.Joueur;
+import domino2d.DJoueur;
+import domino2d.DPioche;
+import domino2d.Domino;
 
-public class DJeu extends Jeu {
+public class DLJeu extends Jeu {
 	private ArrayList<Joueur> classement;
 
-	public DJeu(int nbJoueurs, int nbCartes) {
+	public DLJeu(int nbJoueurs, int nbCartes) {
 		joueurs = new ArrayList<Joueur>();
 		pioche = new DPioche();
-		plateau = new DPlateau(120, 120, (Domino) pioche.pioche());
+		plateau = new DLPlateau(120, (Domino) pioche.pioche());
 		classement = new ArrayList<Joueur>();
 		for (int i = 0; i < nbJoueurs; i++)
-			joueurs.add(new DJoueur(pioche, nbCartes));
+			joueurs.add(new Joueur(pioche, nbCartes));
 		actuel = joueurs.get(0);
 	}
 

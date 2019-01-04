@@ -1,4 +1,4 @@
-package domino;
+package trash;
 
 import java.util.Scanner;
 import basic.Carte;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Domino2D_jeu {
 
 	public static Scanner scan = new Scanner(System.in);
-	final private DPlateau plateau;
+	final private DLPlateau plateau;
 	private ArrayList<DJoueur> joueurs;
 	final private DPioche pioche;
 	private ArrayList<DJoueur> classement;
@@ -21,7 +21,7 @@ public class Domino2D_jeu {
 	public Domino2D_jeu(int nbJoueurs, int nbCartes) {
 		joueurs = new ArrayList<DJoueur>();
 		pioche = new DPioche();
-		plateau = new DPlateau(120, 120, pioche.pioche());
+		plateau = new DLPlateau(120, 120, pioche.pioche());
 		classement = new ArrayList<DJoueur>();
 		for (int i = 0; i < nbJoueurs; i++)
 			joueurs.add(new DJoueur(pioche, nbCartes));

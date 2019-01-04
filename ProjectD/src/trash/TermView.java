@@ -1,4 +1,4 @@
-package basic;
+package trash;
 
 public abstract class TermView {
 	private Jeu jeu;

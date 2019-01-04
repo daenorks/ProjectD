@@ -1,4 +1,4 @@
-package domino;
+package domino2d;
 
 import java.util.ArrayList;
 import java.util.Collections;

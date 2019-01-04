@@ -1,4 +1,4 @@
-package domino;
+package domino2d;
 
 import java.io.File;
 

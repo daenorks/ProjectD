@@ -1,4 +1,4 @@
-package domino2;
+package domino2d;
 
 import basic.Carre;
 import basic.Carte;
@@ -29,14 +29,11 @@ public class DPlateau extends Plateau {
 		return false;
 	}
 	
-	void put(Domino d, int x1, int y1, int x2, int y2) {
+	protected void put(Domino d, int x1, int y1, int x2, int y2) {
 		put(d.getCarre1(), x1, y1);
 		put(d.getCarre2(), x2, y2);
 	}
 
-	void put(Domino d, int x1, int x2) {
-		put(d, x1, 0, x2, 0);
-	}
 
 	public DPlateau(int x, int y, Domino d) {
 		super(new Carre[x][y]);
@@ -44,16 +41,14 @@ public class DPlateau extends Plateau {
 		carres[x / 2 + 1][y / 2] = d.getCarre2();
 	}
 	
-	public DPlateau(int x, Domino d) {
-		this(x, 1, d);
-	}
 
 	boolean check(Domino d, int x1, int y1, int x2, int y2) {
 		return (hasVoisin(x1, y1) || hasVoisin(x2, y2)) && (check(d.getCarre1(), x1, y1))
 				&& (check(d.getCarre2(), x2, y2));
 	}
 
-	boolean check(Domino d, int x1, int x2) {
+	protected boolean check(Domino d, int x1, int x2) {
 		return check(d, x1, 0, x2, 0);
 	}
+
 }

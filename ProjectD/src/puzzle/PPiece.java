@@ -1,4 +1,4 @@
-package saboteur;
+package puzzle;
 
 import java.awt.Container;
 import java.awt.event.ActionListener;
@@ -9,8 +9,7 @@ import basic.Carre;
 import basic.Carte;
 import basic.Joueur;
 
-public enum SCarte implements Carte, Carre {
-	;
+public class PPiece implements Carte, Carre {
 
 	@Override
 	public int getH() {
@@ -69,7 +68,7 @@ public enum SCarte implements Carte, Carre {
 	@Override
 	public void setSide(int s) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
