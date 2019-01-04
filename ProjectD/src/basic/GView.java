@@ -155,8 +155,8 @@ public class GView extends JFrame {
 
 	private JButton fillerButton() {
 		JButton button = new JButton();
-		button.setBorder(BorderFactory.createEmptyBorder());
-		button.setContentAreaFilled(false);
+		//button.setBorder(BorderFactory.createEmptyBorder());
+		//button.setContentAreaFilled(false);
 		return button;
 	}
 
